@@ -1,5 +1,5 @@
 http://api.steampowered.com/isteamuser/getplayersummaries/v0002/
-?key=B6622CA506F173656A89DCB17CE8E454&steamids=76561197981349897
+?key=B6622CA506F173656A89DCB17CE8E454&steamids=76561197981349897,
 
 {
 	"response": {

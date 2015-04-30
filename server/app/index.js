@@ -3,7 +3,8 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var variables = require('../env/');
-var steam = require('steamidconvert');
+var steam = require('steamidconvert')();
+var request = require('request');
 module.exports = app;
 
 // Pass our express application pipeline into the configuration
@@ -33,9 +34,14 @@ app.use(function (req, res, next) {
 
 app.get('/*', function (req, res) {
     console.log('this is working!');
-    console.log('this is team', steam);
     console.log('variable test', variables.STEAM.alexCID);
-    console.log(steam.convertToText(variables.STEAM.alexCID));
+    console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
+   console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
+    request('http://www.google.com', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body) // Show the HTML for the Google homepage.
+      }
+    })
     res.sendFile(app.get('indexHTMLPath'));
 });
 

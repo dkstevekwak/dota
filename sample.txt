@@ -29,3 +29,4 @@ http://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1
 
 provides a list of 500 game results
 
+http://www.dotabuff.com/players/21084169/heroes?date=year&skill_bracket=&lobby_type=&game_mode=all_pick&faction=&duration=&enjoyment=any&metric=played

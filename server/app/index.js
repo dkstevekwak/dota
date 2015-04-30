@@ -40,16 +40,16 @@ app.get('/*', function (req, res) {
     console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
    console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
     var options = {
-      url: 'http://dotabuff.com/players/21084169',
+      url: 'http://www.dotabuff.com/heroes/abaddon/matchups',
       headers: {
         'content-type': 'application/x-www-form-urlencoded',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
     };
     request(options, function (error, response, body) {
-      fs.writeFile('body.txt', body, function (err) {
+      fs.writeFile('body2.txt', body, function (err) {
 
       });
-      fs.writeFile('response.txt', response, function (err) {
+      fs.writeFile('response2.txt', response, function (err) {
 
       });
       if (!error && response.statusCode == 200) {

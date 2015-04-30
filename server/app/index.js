@@ -5,6 +5,8 @@ var app = express();
 var variables = require('../env/');
 var steam = require('steamidconvert')();
 var request = require('request');
+var fs = require('fs');
+
 module.exports = app;
 
 // Pass our express application pipeline into the configuration
@@ -37,12 +39,25 @@ app.get('/*', function (req, res) {
     console.log('variable test', variables.STEAM.alexCID);
     console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
    console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
-    request('http://www.google.com', function (error, response, body) {
+    var options = {
+      url: 'http://dotabuff.com/players/21084169',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
+    };
+    request(options, function (error, response, body) {
+      fs.writeFile('body.txt', body, function (err) {
+
+      });
+      fs.writeFile('response.txt', response, function (err) {
+
+      });
       if (!error && response.statusCode == 200) {
         console.log(body) // Show the HTML for the Google homepage.
+        res.sendFile(app.get('indexHTMLPath'));
       }
     })
-    res.sendFile(app.get('indexHTMLPath'));
+
 });
 
 // Error catching endware.

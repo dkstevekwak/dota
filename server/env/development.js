@@ -18,7 +18,8 @@ module.exports = {
   },
   "STEAM": {
     "clientID": "B6622CA506F173656A89DCB17CE8E454",
-    "alexFID": "U:1:21084169",
-    "alexCID": "76561197981349897"
+    "alexSID": "STEAM_0:1:10542084", //steamID
+    "alexFID": "U:1:21084169", //SteamID3 32?
+    "alexCID": "76561197981349897" //SteamID64
   }
 };

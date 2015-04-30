@@ -36,22 +36,48 @@ app.use(function (req, res, next) {
 
 app.get('/*', function (req, res) {
     console.log('this is working!');
-    console.log('variable test', variables.STEAM.alexCID);
-    console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
-   console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
-    var options = {
-      url: 'http://www.dotabuff.com/heroes/abaddon/matchups',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
-    };
+   // console.log('variable test', variables.STEAM.alexCID);
+   // console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
+   //console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
+   // var options = {
+   //   url: 'http://www.dotabuff.com/heroes/abaddon/matchups',
+   //   headers: {
+   //     'content-type': 'application/x-www-form-urlencoded',
+   //     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
+   // };
+   // var Ids = ['U:1:225848454',
+   //     'U:1:209562277',
+   //     'U:1:242521056',
+   //     'U:1:209893205',
+   //     'U:1:262216692',
+   //     'U:1:112248000',
+   //     'U:1:171066904',
+   //     'U:1:111978256',
+   //     'U:1:101851611',
+   //     'U:1:94247651'];
+   //
+   // // These Ids have to be replaced by data received from reading the log file.
+   //
+   // //[U:1:225848454] 1:[U:1:209562277] 2:[U:1:242521056] 3:[U:1:209893205] 4:[U:1:262216692] 5:[U:1:112248000] 6:[U:1:171066904] 7:[U:1:111978256] 8:[U:1:101851611] 9:[U:1:94247651]) (Party 23997006225391493 0:[U:1:209562277] 1:[U:1:242521056] 2:[U:1:209893205])
+   //
+   // var mappedIds = Ids.map(function(eachId){
+   //     return steam.convertTo64(eachId);
+   // })
+   //
+   // var stringIds = mappedIds.toString();
+   // console.log(stringIds);
+   // request('http://api.steampowered.com/isteamuser/getplayersummaries/v0002/?key=B6622CA506F173656A89DCB17CE8E454&steamids=' + stringIds, function(err,response,body){
+   //     console.log(body);
+   //     //replace this with data feed later.
+   // });
+
     request(options, function (error, response, body) {
-      fs.writeFile('body2.txt', body, function (err) {
-
-      });
-      fs.writeFile('response2.txt', response, function (err) {
-
-      });
+      //fs.writeFile('body2.txt', body, function (err) {
+      //
+      //});
+      //fs.writeFile('response2.txt', response, function (err) {
+      //
+      //});
       if (!error && response.statusCode == 200) {
         console.log(body) // Show the HTML for the Google homepage.
         res.sendFile(app.get('indexHTMLPath'));
@@ -59,6 +85,7 @@ app.get('/*', function (req, res) {
     })
 
 });
+
 
 // Error catching endware.
 app.use(function (err, req, res) {

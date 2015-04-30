@@ -1,0 +1,31 @@
+http://api.steampowered.com/isteamuser/getplayersummaries/v0002/
+?key=B6622CA506F173656A89DCB17CE8E454&steamids=76561197981349897
+
+{
+	"response": {
+		"players": [
+			{
+				"steamid": "76561197981349897",
+				"communityvisibilitystate": 3,
+				"profilestate": 1,
+				"personaname": "jigglypuffy",
+				"lastlogoff": 1430340117,
+				"profileurl": "http://steamcommunity.com/profiles/76561197981349897/",
+				"avatar": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/87/8707319fd87ef78f9c3166d44d5a928d72230415.jpg",
+				"avatarmedium": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/87/8707319fd87ef78f9c3166d44d5a928d72230415_medium.jpg",
+				"avatarfull": "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/87/8707319fd87ef78f9c3166d44d5a928d72230415_full.jpg",
+				"personastate": 4,
+				"primaryclanid": "103582791429521408",
+				"timecreated": 1141666696,
+				"personastateflags": 0
+			}
+		]
+
+	}
+}
+
+http://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1
+?key=B6622CA506F173656A89DCB17CE8E454&account_id=76561197981349897
+
+provides a list of 500 game results
+

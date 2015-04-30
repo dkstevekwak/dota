@@ -2,6 +2,8 @@
 var path = require('path');
 var express = require('express');
 var app = express();
+var variables = require('../env/');
+var steam = require('steamidconvert');
 module.exports = app;
 
 // Pass our express application pipeline into the configuration
@@ -30,6 +32,10 @@ app.use(function (req, res, next) {
 });
 
 app.get('/*', function (req, res) {
+    console.log('this is working!');
+    console.log('this is team', steam);
+    console.log('variable test', variables.STEAM.alexCID);
+    console.log(steam.convertToText(variables.STEAM.alexCID));
     res.sendFile(app.get('indexHTMLPath'));
 });
 

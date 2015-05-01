@@ -35,10 +35,10 @@ app.use(function (req, res, next) {
 });
 
 app.get('/*', function (req, res) {
-    console.log('this is working!');
-    console.log('variable test', variables.STEAM.alexCID);
-    console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
-   console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
+   // console.log('this is working!');
+   // console.log('variable test', variables.STEAM.alexCID);
+   // console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
+   //console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
     var options = {
       url: 'http://www.dotabuff.com/heroes/abaddon/matchups',
       headers: {

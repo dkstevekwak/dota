@@ -22,17 +22,17 @@
         <h1>This is heroChoice</h1>
         <div class="col-xs-12">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            <input class="form-input" placeholder="search" />
+            <input class="form-input" placeholder="search" ng-model="query"/>
         </div>
         <div class="categories">
-            <button type="button" class="btn btn-default">All</button>
-            <button type="button" class="btn btn-default">Strength</button>
-            <button type="button" class="btn btn-default">Agility</button>
-            <button type="button" class="btn btn-default">Intelligence</button>
+            <button ng-class="{'ready': currentCategory==='all'}" type="button" ng-click="setCategory('all')" class="btn btn-default">All</button>
+            <button ng-class="{'ready': currentCategory==='strength'}" type="button" ng-click="setCategory('strength')" class="btn btn-default">Strength</button>
+            <button ng-class="{'ready': currentCategory==='agility'}" type="button" ng-click="setCategory('agility')" class="btn btn-default">Agility</button>
+            <button ng-class="{'ready': currentCategory==='intelligence'}" type="button" ng-click="setCategory('intelligence')" class="btn btn-default">Intelligence</button>
         </div>
-        <div class="col-xs-3 eachChoice" ng-repeat="choice in choices" ng-click="setPhoto(choice.source)">
-            <img ng-class="{'ready': fillingSource===choice.source}" src="{{choice.source}}"/>
-            <h5>{{choice.name}}</h5>
+        <div class="col-xs-3 eachChoice" ng-show="currentCategory==='all' || choice.heroType===currentCategory" ng-repeat="choice in choices | filter: search" ng-click="setPhoto(choice.heroImage)">
+            <img ng-class="{'ready': fillingSource===choice.heroImage}" src="{{choice.heroImage}}"/>
+            <h5>{{choice.heroName}}</h5>
         </div>
     </div>
 </section>

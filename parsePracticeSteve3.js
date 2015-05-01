@@ -43,6 +43,7 @@ connectToDb.then(function () {
         }
         var obj = {
           heroName: heroName,
+          heroImage: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroName + '_hphover.png',
           statType: 'heroMatchUp',
           proficiency: []
         };
@@ -60,7 +61,9 @@ connectToDb.then(function () {
         var hero = new HeroStat(obj);
         hero.save(function(err, heroData){
           if (err) console.log(err);
-          done();
+          setTimeout(function(){
+            done();
+          }, 3000);
           //console.log(obj);
           //console.log('hero created?!', heroData);
         })

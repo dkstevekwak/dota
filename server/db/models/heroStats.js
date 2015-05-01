@@ -5,8 +5,7 @@ var schema = new mongoose.Schema({
   heroName: String,
   statType: {
     type: String,
-    required: true,
-    unique : true
+    required: true
   },
   proficiency: [{
     name: String,

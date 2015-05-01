@@ -33,12 +33,23 @@
     //position:absolute;
     //left:20%;
     //top: 0;
-    width:70%;
-    height: 150px;
+    width:85%;
+    height: 125px;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco') no-repeat center;
   }
   .eachChoice {
     text-align: center;
-    float:left;
+    h5{
+      position:inherit;
+      bottom:26px;
+      color: white;
+      z-index: 0;
+    }
+    image{
+      width:100%;
+
+
+    }
   }
   .stats {
     height: 100px;
@@ -49,7 +60,7 @@
     margin-bottom: 20px;
   }
   .ready {
-    border: 4px solid black;
+    border: 4px solid yellowgreen;
   }
 }
 

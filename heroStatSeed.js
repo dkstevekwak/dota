@@ -19,6 +19,8 @@
 
  */
 
+//this seeds for a single hero
+
 var mongoose = require('mongoose');
 var connectToDb = require('./server/db');
 var User = mongoose.model('User');
@@ -26,6 +28,7 @@ var HeroStat = mongoose.model('heroStat');
 var fs = require('fs');
 var cheerio = require('cheerio');
 var temp = fs.readFileSync('./heroSpecific.txt').toString();
+var _ = require('lodash');
 
 $ = cheerio.load(temp);
 
@@ -60,7 +63,11 @@ connectToDb.then(function () {
   //
   //});
   console.log('OBJ HERE', obj);
-  HeroStat.create(obj, function(err, heroData){
+  HeroStat.findOne({heroName: 'abaddon'}, function(err, heroData){
+    _.extend(heroData, obj);
+    heroData.save(function(err, hero){
+      console.log('done saving');
+    });
     console.log(heroData);
 
   }).then(function () {

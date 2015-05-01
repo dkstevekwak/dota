@@ -39,12 +39,12 @@ app.get('/*', function (req, res) {
    // console.log('variable test', variables.STEAM.alexCID);
    // console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
    //console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
-   // var options = {
-   //   url: 'http://www.dotabuff.com/heroes/abaddon/matchups',
-   //   headers: {
-   //     'content-type': 'application/x-www-form-urlencoded',
-   //     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
-   // };
+    var options = {
+      url: 'http://www.dotabuff.com/heroes/abaddon/matchups',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
+    };
    // var Ids = ['U:1:225848454',
    //     'U:1:209562277',
    //     'U:1:242521056',

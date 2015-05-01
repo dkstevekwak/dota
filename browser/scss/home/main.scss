@@ -63,6 +63,43 @@
   .ready {
     border: 4px solid yellowgreen;
   }
+  .all {
+    padding: 6px 10px 15px 9px;
+    overflow: visible;
+    text-transform: uppercase;
+    color: #616363;
+    font-size: 16px;
+  }
+  .strength {
+    background-image: url('http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_str.png');
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    padding: 6px 10px 15px 40px;
+    overflow: visible;
+    text-transform: uppercase;
+    color: #616363;
+    font-size: 16px;
+  }
+  .agility {
+    background-image: url('http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_agi.png');
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    padding: 6px 10px 15px 40px;
+    overflow: visible;
+    text-transform: uppercase;
+    color: #616363;
+    font-size: 16px;
+  }
+  .intelligence {
+    background-image: url('http://cdn.dota2.com/apps/dota2/images/heropedia/overviewicon_int.png');
+    background-repeat: no-repeat;
+    background-position: 0px 5px;
+    padding: 6px 10px 15px 40px;
+    overflow: visible;
+    text-transform: uppercase;
+    color: #616363;
+    font-size: 16px;
+  }
 }
 
 

@@ -25,14 +25,20 @@
             <input class="form-input" placeholder="search" ng-model="query"/>
         </div>
         <div class="categories">
-            <button ng-class="{'ready': currentCategory==='all'}" type="button" ng-click="setCategory('all')" class="btn btn-default">All</button>
-            <button ng-class="{'ready': currentCategory==='strength'}" type="button" ng-click="setCategory('strength')" class="btn btn-default">Strength</button>
-            <button ng-class="{'ready': currentCategory==='agility'}" type="button" ng-click="setCategory('agility')" class="btn btn-default">Agility</button>
-            <button ng-class="{'ready': currentCategory==='intelligence'}" type="button" ng-click="setCategory('intelligence')" class="btn btn-default">Intelligence</button>
+            <button ng-class="{'ready': currentCategory==='all'}" type="button" ng-click="setCategory('all')" class="all btn btn-default">All</button>
+            <button ng-class="{'ready': currentCategory==='strength'}" type="button" ng-click="setCategory('strength')" class="strength btn btn-default">Strength</button>
+            <button ng-class="{'ready': currentCategory==='agility'}" type="button" ng-click="setCategory('agility')" class="agility btn btn-default">Agility</button>
+            <button ng-class="{'ready': currentCategory==='intelligence'}" type="button" ng-click="setCategory('intelligence')" class="intelligence btn btn-default">Intelligence</button>
         </div>
         <div class="col-xs-3 eachChoice" ng-show="currentCategory==='all' || choice.heroType===currentCategory" ng-repeat="choice in choices | filter: search" ng-click="setPhoto(choice.heroImage)">
             <img ng-class="{'ready': fillingSource===choice.heroImage}" src="{{choice.heroImage}}"/>
             <h5>{{choice.heroName}}</h5>
+            <form ng-submit="editInfo(choice)">
+                <input type="text" placeholder="image" ng-model="choice.heroImage"/>
+                <input type="text" placeholder="Type" ng-model="choice.heroType"/>
+                <input type="text" placeholder="categories" ng-model="choice.categories"/>
+                <button>edit</button>
+            </form>
         </div>
     </div>
-</section>
+</section>r

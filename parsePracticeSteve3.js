@@ -1,7 +1,7 @@
 var fs = require('fs');
 var cheerio = require('cheerio');
 var temp = fs.readFileSync('./heroSpecific.txt').toString();
-
+var async = require('async');
 $ = cheerio.load(temp);
 
 //console.log($("a[href^='/heroes/sniper']").first().parents('tr'));
@@ -20,9 +20,18 @@ var newArr = array.map(function(el){
   return el.toLowerCase().replace(/\s/g, '-').replace("\'", '');
 })
 console.log("here's the new arr", newArr);
+var results = [];
+async.eachLimit(newArr, 1, function(heroName, done){
+  var url = 'http://www.dotabuff.com/heroes/' + heroName + '/matchups';
+  results.push(url);
+  done();
+}, function(err){
+  if (err) console.log(err);
+  console.log(results);
+});
 
 
-var url = 'http://www.dotabuff.com/heroes/' + newArr[i] + '/matchups';
+//
 
 
 

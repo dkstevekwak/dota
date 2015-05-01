@@ -7,7 +7,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function($scope, Main){
+app.controller('HomeController', function($http, $scope, Main){
     Main.getHeroes().then(function(heroes){
         $scope.choices = heroes;
     });
@@ -18,6 +18,13 @@ app.controller('HomeController', function($scope, Main){
         if(ally.image) ally.image = null;
         else ally.image = $scope.fillingSource;
 
+    };
+
+    $scope.editInfo = function(hero){
+        hero.categories = hero.categories.split(',');
+        $http.put('/api/main/'+hero._id, hero).then(function(hero){
+
+        });
     };
     $scope.search = function (hero){
         if(!$scope.query) return true;

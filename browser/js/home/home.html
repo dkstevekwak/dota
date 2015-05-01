@@ -30,8 +30,8 @@
             <button type="button" class="btn btn-default">Agility</button>
             <button type="button" class="btn btn-default">Intelligence</button>
         </div>
-        <div class="col-xs-3 eachChoice" ng-repeat="choice in choices">
-            <img ng-class="{'ready': fillingSource===choice.source}" src="{{choice.source}}" ng-click="setPhoto(choice.source)"/>
+        <div class="col-xs-3 eachChoice" ng-repeat="choice in choices" ng-click="setPhoto(choice.source)">
+            <img ng-class="{'ready': fillingSource===choice.source}" src="{{choice.source}}"/>
             <h5>{{choice.name}}</h5>
         </div>
     </div>

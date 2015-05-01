@@ -34,8 +34,9 @@ app.controller('HomeController', function($scope){
     ];
     $scope.choices = [
         {
-            name: 'Earthshaker',
-            source:'http://cdn.dota2.com/apps/dota2/images/heroes/earthshaker_hphover.png'
+            heroName: 'Earthshaker',
+            heroImage: null,
+
         },
         {
             name: 'Sven',

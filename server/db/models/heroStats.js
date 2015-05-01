@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
   heroName: String,
   heroImage: String,
+  heroType: String,
+  categories: [String],
   statType: {
     type: String,
     required: true,

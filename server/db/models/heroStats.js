@@ -8,8 +8,7 @@ var schema = new mongoose.Schema({
   categories: [String],
   statType: {
     type: String,
-    required: true,
-    unique : true
+    required: true
   },
   proficiency: [{
     name: String,

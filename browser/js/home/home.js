@@ -10,31 +10,33 @@ app.config(function ($stateProvider) {
 app.controller('HomeController', function($scope){
     $scope.fillingSource=null;
     $scope.setImage = function(ally){
-        if(!$scope.fillingSource) $scope.fillingSource = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco';
+        if(ally.image) ally.image = null;
         else ally.image = $scope.fillingSource;
+
     };
     $scope.setPhoto = function(src){
         $scope.fillingSource=src;
     };
 
     $scope.allies = [
-        {name: 'a', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'b', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'c', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'd', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'e', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'}
-        ];
+        {name: 'a', image:null},
+        {name: 'b', image:null},
+        {name: 'c', image:null},
+        {name: 'd', image:null},
+        {name: 'e', image:null}
+    ];
     $scope.enemies = [
-        {name: 'a', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'b', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'c', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'd', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'},
-        {name: 'e', image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco'}
+        {name: 'a', image:null},
+        {name: 'b', image:null},
+        {name: 'c', image:null},
+        {name: 'd', image:null},
+        {name: 'e', image:null}
     ];
     $scope.choices = [
         {
-            name: 'Earthshaker',
-            source:'http://cdn.dota2.com/apps/dota2/images/heroes/earthshaker_hphover.png'
+            heroName: 'Earthshaker',
+            heroImage: null,
+
         },
         {
             name: 'Sven',

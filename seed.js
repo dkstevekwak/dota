@@ -44,6 +44,7 @@ connectToDb.then(function () {
   var results = [];
   var obj = {
     heroName: 'Abaddon',
+    heroImage: 'http://cdn.dota2.com/apps/dota2/images/heroes/abaddon_hphover.png',
     statType: 'heroMatchUp',
     proficiency: []
   };

@@ -7,7 +7,10 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function($scope){
+app.controller('HomeController', function($scope, Main){
+    Main.getHeroes().then(function(heroes){
+        $scope.choices = heroes;
+    });
     $scope.fillingSource = null;
     $scope.currentCategory = 'all';
     $scope.query = null;

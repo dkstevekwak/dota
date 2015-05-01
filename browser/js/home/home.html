@@ -1,4 +1,38 @@
 <section id="home">
-    <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting>
+    <div class="duel col-xs-8">
+        <div class="allies col-xs-12">
+            <h1>This is ally</h1>
+            <div class="eachAlly" ng-repeat="ally in allies">
+                <h3>{{ally.name}}</h3>
+                <img ng-click='setImage(ally)' class="playerImage" src="{{ally.image}}" />
+            </div>
+        </div>
+        <div class="stats col-xs-12">
+            <h1>This is stats</h1>
+        </div>
+        <div class="enemies col-xs-12">
+            <h1>This is enemy</h1>
+            <div class="eachEnemy" ng-repeat="enemy in enemies">
+                <h3>{{enemy.name}}</h3>
+                <img ng-click='setImage(enemy)' class="playerImage" src="{{enemy.image}}" />
+            </div>
+        </div>
+    </div>
+    <div class="heroChoice col-xs-4 clearfix">
+        <h1>This is heroChoice</h1>
+        <div class="col-xs-12">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            <input class="form-input" placeholder="search" />
+        </div>
+        <div class="categories">
+            <button type="button" class="btn btn-default">All</button>
+            <button type="button" class="btn btn-default">Strength</button>
+            <button type="button" class="btn btn-default">Agility</button>
+            <button type="button" class="btn btn-default">Intelligence</button>
+        </div>
+        <div class="col-xs-3 eachChoice" ng-repeat="choice in choices">
+            <img ng-class="{'ready': fillingSource===choice.source}" src="{{choice.source}}" ng-click="setPhoto(choice.source)"/>
+            <h5>{{choice.name}}</h5>
+        </div>
+    </div>
 </section>

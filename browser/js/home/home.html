@@ -33,12 +33,12 @@
         <div class="col-xs-3 eachChoice" ng-show="currentCategory==='all' || choice.heroType===currentCategory" ng-repeat="choice in choices | filter: search" ng-click="setPhoto(choice.heroImage)">
             <img ng-class="{'ready': fillingSource===choice.heroImage}" src="{{choice.heroImage}}"/>
             <h5>{{choice.heroName}}</h5>
-            <form ng-submit="editInfo(choice)">
-                <input type="text" placeholder="image" ng-model="choice.heroImage"/>
-                <input type="text" placeholder="Type" ng-model="choice.heroType"/>
-                <input type="text" placeholder="categories" ng-model="choice.categories"/>
-                <button>edit</button>
-            </form>
+            <!--<form ng-submit="editInfo(choice)">-->
+                <!--<input type="text" placeholder="image" ng-model="choice.heroImage"/>-->
+                <!--<input type="text" placeholder="Type" ng-model="choice.heroType"/>-->
+                <!--<input type="text" placeholder="categories" ng-model="choice.categories"/>-->
+                <!--<button>edit</button>-->
+            <!--</form>-->
         </div>
     </div>
 </section>r

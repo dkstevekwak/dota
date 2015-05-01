@@ -35,7 +35,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/*', function (req, res) {
-    console.log('this is working!');
+
    // console.log('variable test', variables.STEAM.alexCID);
    // console.log('steamCID to long id', steam.convertToText(variables.STEAM.alexCID));
    //console.log('steamFID to long id', steam.convertTo64(variables.STEAM.alexFID));
@@ -72,6 +72,7 @@ app.get('/*', function (req, res) {
    // });
 
     request(options, function (error, response, body) {
+
       //fs.writeFile('body2.txt', body, function (err) {
       //
       //});

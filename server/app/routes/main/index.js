@@ -11,7 +11,12 @@ module.exports = router;
 router.get('/', function(req,res,next){
     Heroes.find({}, function(err,heroes){
         if (err) return next(err);
-        res.send(heroes);
+        var sortedHeroes = heroes.sort(function(a,b){
+          //console.log(a.order);
+          return b.order - a.order;
+        });
+        //console.log(sortedHeroes.slice(0, 2).order);
+      res.send(sortedHeroes);
     })
 });
 
@@ -78,12 +83,12 @@ router.post('/serverLog', function(req, res, next){
         tempObj.kda = el[3];
         obj.proficiency.push(tempObj);
       });
-      PersonalStat.create(obj, function(err, personalData){
-        if(err) console.log(err);
-        console.log('personal data created', personalData);
-        results.push(personalData);
+      //PersonalStat.create(obj, function(err, personalData){
+      //  if(err) console.log(err);
+      //  console.log('personal data created', personalData);
+        results.push(obj);
         done();
-      })
+      //})
       console.log('here are some results', results);
     });
   }, function(err){

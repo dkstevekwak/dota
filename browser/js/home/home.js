@@ -75,263 +75,263 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
 
     $scope.allies = $rootScope.playerList;
     $scope.enemies = $rootScope.playerList;
-    $scope.choices = [
-        {
-            heroName: 'Earthshaker',
-            heroImage: 'http://cdn.dota2.com/apps/dota2/images/heroes/earthshaker_hphover.png',
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Sven',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Tiny',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Kunkka',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Beastmaster',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Clockwerk',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Omniknight',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Huskar',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Alchemist',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Brewmaster',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Treantprotector',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Io',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Centaurwarrunner',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Timbersaw',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Bristleback',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Tusk',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Eldertitan',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Legioncommander',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Earthspirit',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Axe',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Phoenix',
-            heroImage: null,
-            heroType: 'strength',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Anti-mage',
-            heroImage: null,
-            heroType: 'agility',
-            categories: [],
-            statType: null,
-            proficiency: []
-        },
-        {
-            heroName: 'Crystalmaiden',
-            heroImage: null,
-            heroType: 'intelligence',
-            categories: [],
-            statType: null,
-            proficiency: []
-        }
-    ];
+    $scope.choices = [];
+        //{
+        //    heroName: 'Earthshaker',
+        //    heroImage: 'http://cdn.dota2.com/apps/dota2/images/heroes/earthshaker_hphover.png',
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Sven',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Tiny',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Kunkka',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Beastmaster',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Clockwerk',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Omniknight',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Huskar',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Alchemist',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Brewmaster',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Treantprotector',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Io',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Centaurwarrunner',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Timbersaw',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Bristleback',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Tusk',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Eldertitan',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Legioncommander',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Earthspirit',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Axe',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Phoenix',
+        //    heroImage: null,
+        //    heroType: 'strength',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Anti-mage',
+        //    heroImage: null,
+        //    heroType: 'agility',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //},
+        //{
+        //    heroName: 'Crystalmaiden',
+        //    heroImage: null,
+        //    heroType: 'intelligence',
+        //    categories: [],
+        //    statType: null,
+        //    proficiency: []
+        //}
 
-})
+
+});

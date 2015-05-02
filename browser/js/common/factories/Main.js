@@ -6,7 +6,10 @@ app.factory('Main', function($http){
             });
         },
         getPlayerPopulate: function(log){
-            return $http.post('/api/main/serverLog', log).then(function(res){
+          var obj = {
+            log: log
+          }
+            return $http.post('/api/main/serverLog', obj).then(function(res){
                 return res.data;
             });
         }

@@ -7,6 +7,7 @@ var schema = new mongoose.Schema({
     required: true,
     unique : true
   },
+  userID: String,
   proficiency: [{
     name: String,
     games: Number,

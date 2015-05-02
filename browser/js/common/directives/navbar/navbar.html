@@ -9,7 +9,7 @@
             </li>
         </ul>
         <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-        <button ui-sref="playerPopulate" class="btn login-button">Get Player Info</button>
+        <button ng-click="openModal()" class="btn login-button">Get Player Info</button>
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>

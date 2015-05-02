@@ -7,10 +7,25 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function($http, $scope, Main){
+app.controller('HomeController', function($http, $rootScope, $scope, Main){
     Main.getHeroes().then(function(heroes){
         $scope.choices = heroes;
     });
+
+    $rootScope.playerList1 = [
+        {user:'player A'},
+        {user:'player B'},
+        {user:'player C'},
+        {user:'player D'},
+        {user:'player E'}
+    ];
+    $rootScope.playerList2 = [
+        {user:'player F'},
+        {user:'player G'},
+        {user:'player H'},
+        {user:'player I'},
+        {user:'player J'}
+    ];
     $scope.fillingSource = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
@@ -44,26 +59,17 @@ app.controller('HomeController', function($http, $scope, Main){
     };
     $scope.setPhoto = function(src){
         $scope.fillingSource=src;
+        console.log(Main.playerList.slice(0,5));
+        console.log($rootScope.playerList);
+        console.log($scope.allies);
     };
 
     $scope.setCategory = function(category){
         $scope.currentCategory = category;
     };
 
-    $scope.allies = [
-        {name: 'a', image:null},
-        {name: 'b', image:null},
-        {name: 'c', image:null},
-        {name: 'd', image:null},
-        {name: 'e', image:null}
-    ];
-    $scope.enemies = [
-        {name: 'a', image:null},
-        {name: 'b', image:null},
-        {name: 'c', image:null},
-        {name: 'd', image:null},
-        {name: 'e', image:null}
-    ];
+    $scope.allies = $rootScope.playerList;
+    $scope.enemies = $rootScope.playerList;
     $scope.choices = [
         {
             heroName: 'Earthshaker',

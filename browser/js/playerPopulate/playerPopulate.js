@@ -7,11 +7,11 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('PlayerPopulateController', function($http, $scope, Main){
+app.controller('PlayerPopulateController', function($modalInstance, $http, $scope, Main){
     $scope.playerLog = null;
     $scope.sendLog = function(log){
         Main.getPlayerPopulate(log).then(function(res){
-            console.log(res);
+            $modalInstance.close();
         });
     }
 });

@@ -13,7 +13,8 @@ $('tr').each(function(i,elem){
 });
 
 array.shift();
-console.log("should start here", array);
+var playerInfo = $('#content-header-secondary').find('time').text()
+console.log(playerInfo);
 
 //
 //each(function(i, elem){

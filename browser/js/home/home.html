@@ -1,9 +1,9 @@
 <section id="home">
     <div class="duel col-xs-7">
         <div class="allies col-xs-12">
-            <h1>This is ally</h1>
-            <div class="eachAlly" ng-repeat="ally in allies">
-                <h3>{{ally.name}}</h3>
+            <h1>This is Radiant</h1>
+            <div class="eachAlly" ng-repeat="player in playerList1">
+                <h3>{{player.user}}</h3>
                 <img ng-click='setImage(ally)' class="playerImage" src="{{ally.image}}" />
             </div>
         </div>
@@ -11,9 +11,9 @@
             <h1>This is stats</h1>
         </div>
         <div class="enemies col-xs-12">
-            <h1>This is enemy</h1>
-            <div class="eachEnemy" ng-repeat="enemy in enemies">
-                <h3>{{enemy.name}}</h3>
+            <h1>This is Dire</h1>
+            <div class="eachEnemy" ng-repeat="player in playerList2">
+                <h3>{{player.user}}</h3>
                 <img ng-click='setImage(enemy)' class="playerImage" src="{{enemy.image}}" />
             </div>
         </div>

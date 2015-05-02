@@ -68,10 +68,12 @@ router.post('/serverLog', function(req, res, next){
       });
       array.shift(); //generates all hero stuff
       var playerName = $('#content-header').find('img').attr('alt');
+      var playerInfo = [$('#content-header-secondary').find('dd').find('time').text(),$('#content-header-secondary').find('.wins').text(),$('#content-header-secondary').find('.losses').text(),$('#content-header-secondary').find('.abandons').text()];
 
       var obj = {
         user: playerName,
         userId: player,
+        userInfo: playerInfo,
         proficiency: []
       };
       var tempObj = {};

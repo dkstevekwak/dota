@@ -6,6 +6,7 @@ var schema = new mongoose.Schema({
   heroImage: String,
   heroType: String,
   categories: [String],
+  order: Number,
   statType: {
     type: String,
     required: true

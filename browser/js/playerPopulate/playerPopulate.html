@@ -4,7 +4,7 @@
         You can copy paste the entire server_log.txt, or just the last couple lines. Found in
         Window -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\dota\
         Mac -> /Library/Application Support/Steam/steamapps/common/dota 2 beta/dota</p>
-        <textarea rows="6" class="log form-control" ng-model= "playerLog" type="textarea" placeholder="copy and paste your server_log.txt here"></textarea>
-        <button class="btn btn-default" ng-click="sendLog(playerlog)">Send</button>
+        <textarea rows="6" class="log form-control" ng-model= "playerLog.content" type="textarea" placeholder="copy and paste your server_log.txt here"></textarea>
+        <button class="btn btn-default" ng-click="sendLog(playerLog.content)">Send</button>
     </div>
 </section>

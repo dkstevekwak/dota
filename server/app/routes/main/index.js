@@ -4,6 +4,7 @@ var Heroes = require('mongoose').model('heroStat');
 var PersonalStat = require('mongoose').model('personalStat');
 var async = require('async');
 var cheerio = require('cheerio');
+var request = require('request');
 var _ = require('lodash');
 module.exports = router;
 
@@ -25,11 +26,9 @@ router.put('/:heroId', function(req,res,next){
     })
 });
 router.post('/serverLog', function(req, res, next){
-  var entireString = req.body;
-  var allFriendIDs = getFriendId();
-  var lastTenFriendIDs = allFriendIDs.slice(-10);
-  console.log(lastTenFriendIDs);
-
+  console.log('we are inside server log');
+  var entireString = req.body.log;
+  console.log(entireString);
   function getFriendId () {
     var pat = /U:1:(\d*)/g;
     var arrToReturn = [];
@@ -37,12 +36,18 @@ router.post('/serverLog', function(req, res, next){
     while (val = pat.exec(entireString)) {
       arrToReturn.push(val[1]);
     }
-    console.log('hoping this runs before serverLog');
+    console.log('hoping this runs before serverLog', arrToReturn);
     return arrToReturn;
   };
-  console.log('here is the hypothetical list of friends ', allFriendIDs );
+  var allFriendIDs = getFriendId();
+  var lastTenFriendIDs = allFriendIDs.slice(-10);
+  //console.log(lastTenFriendIDs);
 
-  async.forEachLimit(allFriendIDs, 1, function(player, done){
+
+  console.log('here is the hypothetical list of friends ', lastTenFriendIDs );
+  var results = [];
+  async.forEachLimit(lastTenFriendIDs, 1, function(player, done){
+    console.log('inside async now');
     var tempUrl = 'http://www.dotabuff.com/players/' + player + '/heroes?date=year&skill_bracket=&lobby_type=&game_mode=all_pick&faction=&duration=&enjoyment=any&metric=played';
     var options = {
       url: tempUrl,
@@ -51,14 +56,14 @@ router.post('/serverLog', function(req, res, next){
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
     };
     request(options, function (error, response, body) {
-      $ = cheerio.load(body);
+      var $ = cheerio.load(body);
       var array = [];
       $('tr').each(function(i,elem){
         array.push([$(this).find("img").attr('alt'), $(this).find("td").first().next().next().text(), $(this).find("td").first().next().next().next().text(), $(this).find("td").first().next().next().next().next().text()]);
       });
       array.shift(); //generates all hero stuff
       var playerName = $('#content-header').find('img').attr('alt');
-      var results = [];
+
       var obj = {
         user: playerName,
         userId: player,
@@ -74,13 +79,15 @@ router.post('/serverLog', function(req, res, next){
         obj.proficiency.push(tempObj);
       });
       PersonalStat.create(obj, function(err, personalData){
-        console.log(personalData);
+        if(err) console.log(err);
+        console.log('personal data created', personalData);
         results.push(personalData);
         done();
       })
+      console.log('here are some results', results);
     });
   }, function(err){
-    res.send(results);
+    res.json(results).end();
   })
   //for each player
   //parse player specific data

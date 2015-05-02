@@ -21,7 +21,9 @@ app.controller('HomeController', function($http, $scope, Main){
     };
 
     $scope.editInfo = function(hero){
-        hero.categories = hero.categories.split(',');
+        console.log('typeof hero.categories', typeof hero.categories);
+        console.log(hero.categories);
+        hero.categories = hero.categories.toString().split(',');
         $http.put('/api/main/'+hero._id, hero).then(function(hero){
 
         });

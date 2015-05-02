@@ -13,7 +13,7 @@ router.get('/', function(req,res,next){
         if (err) return next(err);
         var sortedHeroes = heroes.sort(function(a,b){
           //console.log(a.order);
-          return b.order - a.order;
+          return a.order - b.order;
         });
         //console.log(sortedHeroes.slice(0, 2).order);
       res.send(sortedHeroes);

@@ -29,10 +29,15 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
     $scope.fillingSource = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
-    $scope.setImage = function(ally){
-        if(ally.image) ally.image = null;
-        else ally.image = $scope.fillingSource;
+    $scope.setChoice = function(player){
+        if(player.selectedHero) player.selectedHero = null;
+        else {
+            player.selectedHero = $scope.fillingSource;
+        }
 
+    };
+    $scope.getPercentage = function(w,l){
+        return Math.round(parseInt(w)/(parseInt(w)+parseInt(l))*100) + "%"
     };
 
     $scope.editInfo = function(hero){

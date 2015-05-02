@@ -74,7 +74,8 @@ router.post('/serverLog', function(req, res, next){
         user: playerName,
         userId: player,
         userInfo: playerInfo,
-        proficiency: []
+        proficiency: [],
+        selectedHero: null
       };
       var tempObj = {};
       array.forEach(function (el) {

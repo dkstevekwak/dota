@@ -4,7 +4,17 @@
             <h1>This is Radiant</h1>
             <div class="eachAlly" ng-repeat="player in playerList1">
                 <h3>{{player.user}}</h3>
-                <img ng-click='setImage(ally)' class="playerImage" src="{{ally.image}}" />
+                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero}}" />
+                <div ng-if="player.userInfo[0].length && !player.selectedHero">
+                    <h5>last played</h5>
+                    <h5>{{player.userInfo[0]}}</h5>
+                    <h5>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h5>
+                    <h5>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h5>
+                </div>
+                <div ng-if="!player.userInfo[0].length">
+                    <h5>This user's info is not available</h5>
+                </div>
+                <!--Another ng-if to show selectedHero specific data here-->
             </div>
         </div>
         <div class="stats col-xs-12">
@@ -14,7 +24,16 @@
             <h1>This is Dire</h1>
             <div class="eachEnemy" ng-repeat="player in playerList2">
                 <h3>{{player.user}}</h3>
-                <img ng-click='setImage(enemy)' class="playerImage" src="{{enemy.image}}" />
+                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero}}" />
+                <div ng-if="player.userInfo[0].length && !player.selectedHero">
+                    <h5>last played</h5>
+                    <h5>{{player.userInfo[0]}}</h5>
+                    <h5>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h5>
+                    <h5>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h5>
+                </div>
+                <div ng-if="!player.userInfo[0].length">
+                    <h5>This user's info is not available</h5>
+                </div>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <section id="home">
     <div class="duel col-xs-7">
         <div class="allies col-xs-12">
-            <div class="eachAlly" ng-repeat="player in playerList1">
+            <div class="eachAlly" ng-style="{'background-color': colors[player.color]}" ng-repeat="player in playerList1">
                 <h3>{{player.user}}</h3>
                 <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
                 <div ng-if="player.userInfo[0].length && !player.selectedHero">
@@ -32,8 +32,7 @@
         <div class="stats col-xs-12">
             <h1>This is stats</h1>
         </div>
-        <div class="enemies col-xs-12">
-            <div class="eachEnemy" ng-repeat="player in playerList2">
+            <div class="eachEnemy" ng-style="{'background-color': colors[player.color]}" ng-repeat="player in playerList2">
                 <h3>{{player.user}}</h3>
                 <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
                 <div ng-if="player.userInfo[0].length && !player.selectedHero">

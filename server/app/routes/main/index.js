@@ -32,7 +32,7 @@ router.put('/:heroId', function(req,res,next){
 });
 router.post('/serverLog', function(req, res, next){
   console.log('we are inside server log');
-  var entireString = req.body.log.replace(/\(Party\s\d+(\s\d:\[U:\d:\d+\])+\)/g,"");
+  var entireString = req.body.log;
   function getFriendId () {
     var pat = /U:1:(\d*)/g;
     var arrToReturn = [];
@@ -51,7 +51,7 @@ router.post('/serverLog', function(req, res, next){
 
   console.log('here is the hypothetical list of friends ', lastTenFriendIDs );
   var results = [];
-  async.forEachLimit(lastTenFriendIDs, 10, function(player, done){
+  async.forEachLimit(lastTenFriendIDs, 1, function(player, done){
     console.log('inside async now');
     var tempUrl = 'http://www.dotabuff.com/players/' + player + '/heroes?date=year&skill_bracket=&lobby_type=&game_mode=all_pick&faction=&duration=&enjoyment=any&metric=played';
     var options = {

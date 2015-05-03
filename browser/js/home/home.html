@@ -1,67 +1,73 @@
 <section id="home">
     <div class="duel col-xs-7">
         <div class="allies col-xs-12">
-            <div class="eachAlly" ng-style="{'background-color': colors[player.color]}" ng-repeat="player in playerList1">
-                <h3>{{player.user}}</h3>
-                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
-                <div ng-if="player.userInfo[0].length && !player.selectedHero">
-                    <h6>LastMatch: {{player.userInfo[0]}}</h6>
-                    <h6>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
-                    <h6>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
+            <h4 class="team">RADIANT</h4>
+            <div class="eachAlly" ng-repeat="player in playerList1">
+                <h4 class="playerName">{{player.user}}</h4>
+                <img ng-style="{'border': '2px solid {{colors[player.color]}}'}" ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
+                <div class="overallStat" ng-if="player.userInfo[0].length && !player.selectedHero">
+                    <h6><b>LastMatch:</b> {{player.userInfo[0]}}</h6>
+                    <h6><b>W-L-A:</b> {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
+                    <h6><b>Win %:</b> {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
                 </div>
                 <div ng-if="!player.userInfo[0].length">
-                    <h5>This user's info is not available</h5>
+                    <h6>This user's info is not available</h6>
                 </div>
                 <div ng-if="player.userInfo[0].length && player.selectedHero">
                     <h6 ng-if="player.hasOwnProperty('tempMessage')">{{player.tempMessage}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
-                    <h6>Counters</h6>
-                    <span>{{player.selectedHero.proficiency[0].name}}</span>
-                    <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
-                    <span>{{player.selectedHero.proficiency[1].name}}</span>
-                    <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
-                    <span>{{player.selectedHero.proficiency[2].name}}</span>
-                    <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                    <h5 class="heroName" ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h5>
+                    <h6 ng-if="player.hasOwnProperty('tempGames')"><b>Games:</b> {{player.tempGames}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempkda')"><b>KDA:</b> {{player.tempKda}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
+                    <div class="counters">
+                        <h5>Counters</h5>
+                        <span>{{player.selectedHero.proficiency[0].name}}</span>
+                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[1].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[2].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                    </div>
                 </div>
                 <!--Another ng-if to show selectedHero specific data here-->
             </div>
         </div>
         <div class="stats col-xs-12">
-            <h3>Radiant currently has a {{(winRate *100).toFixed(2)}} % {{ (winRate >= 0 ? "advantage" : "disadvantage")}}</h3>
+            <h3>Radiant currently has a {{(winRate *100).toFixed(2)}} % advantage</h3>
         </div>
-            <div class="eachEnemy" ng-style="{'background-color': colors[player.color]}" ng-repeat="player in playerList2">
-                <h3>{{player.user}}</h3>
-                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
-                <div ng-if="player.userInfo[0].length && !player.selectedHero">
-                    <h6>LastMatch: {{player.userInfo[0]}}</h6>
-                    <h6>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
-                    <h6>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
+        <div class="enemies col-xs-12">
+            <h4 class="team">DIRE</h4>
+            <div class="eachEnemy" ng-repeat="player in playerList2">
+                <h4 class="playerName">{{player.user}}</h4>
+                <img ng-style="{'border': '2px solid {{colors[player.color]}}'}" ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
+                <div class="overallStat" ng-if="player.userInfo[0].length && !player.selectedHero">
+                    <h6><b>LastMatch:</b> {{player.userInfo[0]}}</h6>
+                    <h6><b>W-L-A:</b> {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
+                    <h6><b>Win %:</b> {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
                 </div>
                 <div ng-if="!player.userInfo[0].length">
-                    <h5>This user's info is not available</h5>
+                    <h6>This user's info is not available</h6>
                 </div>
                 <div ng-if="player.userInfo[0].length && player.selectedHero">
                     <h6 ng-if="player.hasOwnProperty('tempMessage')">{{player.tempMessage}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
-                    <h6>Counters</h6>
-                    <span>{{player.selectedHero.proficiency[0].name}}</span>
-                    <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
-                    <span>{{player.selectedHero.proficiency[1].name}}</span>
-                    <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
-                    <span>{{player.selectedHero.proficiency[2].name}}</span>
-                    <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                    <h5 class="heroName" ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h5>
+                    <h6 ng-if="player.hasOwnProperty('tempGames')"><b>Games:</b> {{player.tempGames}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempkda')"><b>KDA:</b> {{player.tempKda}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
+                    <div class="counters">
+                        <h5>Counters</h5>
+                        <span>{{player.selectedHero.proficiency[0].name}}</span>
+                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[1].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[2].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="heroChoice col-xs-5">
-        <h1>This is heroChoice</h1>
         <div class="col-xs-12">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <input class="form-input" placeholder="search" ng-model="query"/>

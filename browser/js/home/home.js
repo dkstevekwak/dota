@@ -43,7 +43,8 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempHeroName = each.name;
                     player.tempGames = each.games;
                     player.tempKda = each.kda;
-                    player.tempWinRate = each.winRate;
+                    player.tempWinRate = Number(each.winRate);
+                    console.log('here is tempWinRate', typeof player.tempWinRate, player.tempWinRate)
                     if(player.tempMessage) player.tempMessage = null;
                 }
             });

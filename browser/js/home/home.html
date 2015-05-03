@@ -18,7 +18,7 @@
                     <h5 class="heroName" ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h5>
                     <h6 ng-if="player.hasOwnProperty('tempGames')"><b>Games:</b> {{player.tempGames}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempkda')"><b>KDA:</b> {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate >= 0) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
                     <div class="counters">
                         <h5>Counters</h5>
                         <span>{{player.selectedHero.proficiency[0].name}}</span>
@@ -47,13 +47,22 @@
                 </div>
                 <div ng-if="!player.userInfo[0].length">
                     <h6>This user's info is not available</h6>
+                    <div ng-if="player.selectedHero" class="counters">
+                        <h5>Counters</h5>
+                        <span>{{player.selectedHero.proficiency[0].name}}</span>
+                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[1].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[2].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                    </div>
                 </div>
                 <div ng-if="player.userInfo[0].length && player.selectedHero">
                     <h6 ng-if="player.hasOwnProperty('tempMessage')">{{player.tempMessage}}</h6>
                     <h5 class="heroName" ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h5>
                     <h6 ng-if="player.hasOwnProperty('tempGames')"><b>Games:</b> {{player.tempGames}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempkda')"><b>KDA:</b> {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate >= 0) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
                     <div class="counters">
                         <h5>Counters</h5>
                         <span>{{player.selectedHero.proficiency[0].name}}</span>

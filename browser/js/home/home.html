@@ -1,6 +1,7 @@
 <section id="home">
     <div class="duel col-xs-7">
         <div class="allies col-xs-12">
+            <h4 class="team">RADIANT</h4>
             <div class="eachAlly" ng-repeat="player in playerList1">
                 <h4 class="playerName">{{player.user}}</h4>
                 <img ng-style="{'border': '2px solid {{colors[player.color]}}'}" ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
@@ -32,9 +33,10 @@
             </div>
         </div>
         <div class="stats col-xs-12">
-            <h3>Radiant currently has a {{(winRate *100).toFixed(2)}} % {{ (winRate >= 0 ? "advantage" : "disadvantage")}}</h3>
+            <h3>Radiant currently has a {{(winRate *100).toFixed(2)}} % advantage</h3>
         </div>
         <div class="enemies col-xs-12">
+            <h4 class="team">DIRE</h4>
             <div class="eachEnemy" ng-repeat="player in playerList2">
                 <h4 class="playerName">{{player.user}}</h4>
                 <img ng-style="{'border': '2px solid {{colors[player.color]}}'}" ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />

@@ -8,6 +8,15 @@
   }
   .overallStat {
   }
+  .team {
+    text-align: center;
+    letter-spacing: 26px;
+    color: navy;
+    border-bottom: 1px solid lightslategray;
+    padding-bottom: 5px;
+    width: 70%;
+    margin: 6px auto;
+  }
   .heroName {
     color:#f30046;
   }
@@ -25,17 +34,17 @@
   .allies {
     margin-top: 20px;
     border: 2px solid skyblue;
-    height: 400px;
+    height: 420px;
   }
   .enemies {
     border: 2px solid orange;
-    height: 400px;
+    height: 420px;
     margin-bottom: 1%;
   }
   .heroChoice {
     border: 2px solid lightgray;
     margin-top: 20px;
-    height: 919px;
+    height: 900px;
     text-align: center;
     overflow-y: scroll;
     input {
@@ -56,8 +65,9 @@
     //left:20%;
     //top: 0;
     width:85%;
-    height: 125px;
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7rYcZZ-h7M0cnzgg1Psb-TuerzrZjYDyHruOduTafZi_Rcjco') no-repeat center;
+    height: 100px;
+    background: url('http://cdn.playbuzz.com/cdn/a9bef57e-375d-4ed1-a1fc-f8ec352e99ec/82c42788-8d5b-4c3c-896e-e6848a196611.jpg') no-repeat center;
+    background-size: 90px 70px;
   }
   .eachChoice {
     text-align: center;
@@ -77,8 +87,11 @@
   }
   .stats {
     margin: 10px;
-    height: 100px;
+    height: 40px;
     text-align: center;
+    h3{
+      margin-top:7px;
+    }
   }
   .categories{
     margin-bottom: 20px;

@@ -14,6 +14,14 @@ app.directive('navbar', function ($modal, $rootScope, AuthService, AUTH_EVENTS, 
                 });
             };
 
+            scope.openSurvey = function() {
+                var modalInstance = $modal.open({
+                    templateUrl: '/js/playerPopulate/survey.html',
+                    controller: 'SurveyController',
+                    size: 'lg'
+                });
+            };
+
             scope.items = [
                 { label: 'Home', state: 'home' },
                 { label: 'Tutorial', state: 'tutorial' }

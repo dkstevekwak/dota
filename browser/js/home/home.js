@@ -11,9 +11,14 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
     Main.getHeroes().then(function(heroes){
         $scope.choices = heroes;
     });
-
+    $scope.colors = {
+      0: "blue",
+      1: "red",
+      2: "purple",
+      3: "pink"
+    };
     $rootScope.playerList1 = [
-        {user:'player A'},
+        {user:'player A', selectedHero: null},
         {user:'player B'},
         {user:'player C'},
         {user:'player D'},
@@ -26,6 +31,20 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
         {user:'player I'},
         {user:'player J'}
     ];
+    $scope.calculateAdvantage = function(){
+      var winRate = 0.5;
+      var count = 0;
+      $rootScope.playerList1.forEach(function(player){
+        if (player.selectedHero) {
+          player.selectedHeroDetails = findHero(player);
+        }
+      })
+    };
+    function findHero(heroName, heroArr){
+      for (var hero in heroArr ){
+        if (hero.name == heroName) return hero;
+      }
+    };
     $scope.fillingSource = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
@@ -33,6 +52,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
         if(player.selectedHero) player.selectedHero = null;
         else {
             player.selectedHero = $scope.fillingSource;
+            console.log('here is the selectedHero object', player.selectedHero);
         }
 
     };

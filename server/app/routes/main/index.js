@@ -32,7 +32,7 @@ router.put('/:heroId', function(req,res,next){
 });
 router.post('/serverLog', function(req, res, next){
   console.log('we are inside server log');
-  var entireString = req.body.log.replace(/\(Party\s\d+(\s\d:\[U:\d:\d+\])+\)/g,"");
+  var entireString = req.body.log;
   function getFriendId () {
     var pat = /U:1:(\d*)/g;
     var arrToReturn = [];

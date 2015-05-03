@@ -17,7 +17,7 @@
                     <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{((player.tempWinRate).toFixed(2)*100).toFixed(2)}}%</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
                     <h6>Counters</h6>
                     <span>{{player.selectedHero.proficiency[0].name}}</span>
                     <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="stats col-xs-12">
-            <h1>This is stats</h1>
+            <h3>Radiant currently has a {{(winRate *100).toFixed(2)}} % {{ (winRate >= 0 ? "advantage" : "disadvantage")}}</h3>
         </div>
             <div class="eachEnemy" ng-style="{'background-color': colors[player.color]}" ng-repeat="player in playerList2">
                 <h3>{{player.user}}</h3>
@@ -48,7 +48,7 @@
                     <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{((player.tempWinRate).toFixed(2)*100).toFixed(2)}}%</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{(player.tempWinRate) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
                     <h6>Counters</h6>
                     <span>{{player.selectedHero.proficiency[0].name}}</span>
                     <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>

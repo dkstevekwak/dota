@@ -1,18 +1,30 @@
 <section id="home">
     <div class="duel col-xs-7">
         <div class="allies col-xs-12">
-            <h1>This is Radiant</h1>
             <div class="eachAlly" ng-repeat="player in playerList1">
                 <h3>{{player.user}}</h3>
-                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero}}" />
+                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
                 <div ng-if="player.userInfo[0].length && !player.selectedHero">
-                    <h5>last played</h5>
-                    <h5>{{player.userInfo[0]}}</h5>
-                    <h5>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h5>
-                    <h5>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h5>
+                    <h6>LastMatch: {{player.userInfo[0]}}</h6>
+                    <h6>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
+                    <h6>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
                 </div>
                 <div ng-if="!player.userInfo[0].length">
                     <h5>This user's info is not available</h5>
+                </div>
+                <div ng-if="player.userInfo[0].length && player.selectedHero">
+                    <h6 ng-if="player.hasOwnProperty('tempMessage')">{{player.tempMessage}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{player.tempWinRate*100}}%</h6>
+                    <h6>Counters</h6>
+                    <span>{{player.selectedHero.proficiency[0].name}}</span>
+                    <span> (Adv: {{player.selectedHero.proficiency[0].advantage*100}}%)</span><br/>
+                    <span>{{player.selectedHero.proficiency[1].name}}</span>
+                    <span>(Adv: {{player.selectedHero.proficiency[1].advantage*100}}%)</span><br/>
+                    <span>{{player.selectedHero.proficiency[2].name}}</span>
+                    <span>(Adv: {{player.selectedHero.proficiency[2].advantage*100}}%)</span>
                 </div>
                 <!--Another ng-if to show selectedHero specific data here-->
             </div>
@@ -21,23 +33,35 @@
             <h1>This is stats</h1>
         </div>
         <div class="enemies col-xs-12">
-            <h1>This is Dire</h1>
             <div class="eachEnemy" ng-repeat="player in playerList2">
                 <h3>{{player.user}}</h3>
-                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero}}" />
+                <img ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
                 <div ng-if="player.userInfo[0].length && !player.selectedHero">
-                    <h5>last played</h5>
-                    <h5>{{player.userInfo[0]}}</h5>
-                    <h5>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h5>
-                    <h5>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h5>
+                    <h6>LastMatch: {{player.userInfo[0]}}</h6>
+                    <h6>W-L-A: {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
+                    <h6>Win %: {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
                 </div>
                 <div ng-if="!player.userInfo[0].length">
                     <h5>This user's info is not available</h5>
                 </div>
+                <div ng-if="player.userInfo[0].length && player.selectedHero">
+                    <h6 ng-if="player.hasOwnProperty('tempMessage')">{{player.tempMessage}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{player.tempWinRate*100}}%</h6>
+                    <h6>Counters</h6>
+                    <span>{{player.selectedHero.proficiency[0].name}}</span>
+                    <span> (Adv: {{player.selectedHero.proficiency[0].advantage*100}}%)</span><br/>
+                    <span>{{player.selectedHero.proficiency[1].name}}</span>
+                    <span>(Adv: {{player.selectedHero.proficiency[1].advantage*100}}%)</span><br/>
+                    <span>{{player.selectedHero.proficiency[2].name}}</span>
+                    <span>(Adv: {{player.selectedHero.proficiency[2].advantage*100}}%)</span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="heroChoice col-xs-5 clearfix">
+    <div class="heroChoice col-xs-5">
         <h1>This is heroChoice</h1>
         <div class="col-xs-12">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -49,8 +73,8 @@
             <button ng-class="{'ready': currentCategory==='agility'}" type="button" ng-click="setCategory('agility')" class="agility btn btn-default">Agility</button>
             <button ng-class="{'ready': currentCategory==='intelligence'}" type="button" ng-click="setCategory('intelligence')" class="intelligence btn btn-default">Intelligence</button>
         </div>
-        <div class="col-xs-3 eachChoice" ng-show="currentCategory==='all' || choice.heroType===currentCategory" ng-repeat="choice in choices | filter: search" ng-click="setPhoto(choice.heroImage)">
-            <img ng-class="{'ready': fillingSource===choice.heroImage}" src="{{choice.heroImage}}"/>
+        <div class="col-xs-3 eachChoice" ng-show="currentCategory==='all' || choice.heroType===currentCategory" ng-repeat="choice in choices | filter: search" ng-click="setHero(choice)">
+            <img ng-class="{'ready': fillingHero.heroImage===choice.heroImage}" src="{{choice.heroImage}}"/>
             <h5>{{choice.heroName}}</h5>
             <form ng-submit="editInfo(choice)">
                 <input type="text" placeholder="image" ng-model="choice.heroImage"/>
@@ -61,4 +85,4 @@
             </form>
         </div>
     </div>
-</section>r
+</section>

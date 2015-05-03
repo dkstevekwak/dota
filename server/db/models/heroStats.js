@@ -3,6 +3,9 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
   heroName: String,
+  heroWinRate: Number,
+  heroPickRate: Number,
+  heroKDA: Number,
   heroImage: String,
   heroType: String,
   categories: [String],

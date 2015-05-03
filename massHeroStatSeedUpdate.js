@@ -10,6 +10,10 @@ var request = require('request');
 var _ = require('lodash');
 
 //generates the hero list of everyone except abaddon and adds them to database!
+// NOTE TO SELF
+//
+// REPLACES IMAGES
+//
 
 connectToDb.then(function () {
   $ = cheerio.load(rawHeroList);

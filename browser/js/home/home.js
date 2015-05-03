@@ -10,6 +10,7 @@ app.config(function ($stateProvider) {
 app.controller('HomeController', function($http, $rootScope, $scope, Main){
     Main.getHeroes().then(function(heroes){
         $scope.choices = heroes;
+        console.log(heroes);
     });
     $scope.colors = {
       0: "blue",
@@ -46,23 +47,43 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
       }
     };
     $scope.fillingSource = null;
+    $scope.fillingHero = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
     $scope.setChoice = function(player){
         if(player.selectedHero) player.selectedHero = null;
         else {
-            player.selectedHero = $scope.fillingSource;
-            console.log('here is the selectedHero object', player.selectedHero);
+            player.selectedHero = $scope.fillingHero;
+            var found = false;
+            player.proficiency.forEach(function(each){
+                var uniformName = each.name.replace(" ","-").toLowerCase();
+                if (uniformName === player.selectedHero.heroName) {
+                    console.log(each, player)
+                    found = true;
+                    player.tempHeroName = each.name;
+                    player.tempGames = each.games;
+                    player.tempKda = each.kda;
+                    player.tempWinRate = Number(each.winRate);
+                    console.log('here is tempWinRate', typeof player.tempWinRate, player.tempWinRate)
+                    if(player.tempMessage) player.tempMessage = null;
+                }
+            });
+            if (!found) {
+                player.tempMessage = 'The player has no record of playing this hero';
+                player.tempHeroName = null;
+                player.tempGames = null;
+                player.tempKda = null;
+                player.tempWinRate = null;
+            }
         }
-
     };
+
+
     $scope.getPercentage = function(w,l){
-        return Math.round(parseInt(w)/(parseInt(w)+parseInt(l))*100) + "%"
+        return Math.round(parseInt(w)/(parseInt(w)+parseInt(l))*10000)/100 + "%"
     };
 
     $scope.editInfo = function(hero){
-        console.log('typeof hero.categories', typeof hero.categories);
-        console.log(hero.categories);
         hero.categories = hero.categories.toString().split(',');
         $http.put('/api/main/'+hero._id, hero).then(function(hero){
 
@@ -82,11 +103,8 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
         }
         return false;
     };
-    $scope.setPhoto = function(src){
-        $scope.fillingSource=src;
-        console.log(Main.playerList.slice(0,5));
-        console.log($rootScope.playerList);
-        console.log($scope.allies);
+    $scope.setHero = function(hero){
+        $scope.fillingHero = hero;
     };
 
     $scope.setCategory = function(category){

@@ -45,14 +45,13 @@ app.factory('Main', function($http, $rootScope){
             log: filteredLog
           };
             return $http.post('/api/main/serverLog', obj).then(function(res){
-                self.playerList = res.data
                 $rootScope.playerList1 = res.data.slice(0,5);
                 $rootScope.playerList2 = res.data.slice(5);
                 $rootScope.groupData = cleanGroupData;
                 if (cleanGroupData.length) {
                   cleanGroupData.forEach(function(group, idx){
                     group.forEach(function(playerId){
-                      //$rootScope.playerList1.forEach(function(list1Player){
+                      $rootScope.playerList1.forEach(function(list1Player){
                       //  console.log('pl1 test: ', list1Player.userId, ' ', playerId);
                         if (list1Player.userId == playerId) {
                           //console.log('we are inside');
@@ -64,11 +63,11 @@ app.factory('Main', function($http, $rootScope){
                         //console.log('pl2 test: ', list2Player.userId, ' ', playerId);
                         if (list2Player.userId == playerId) list2Player.color = idx;
                       });
-                      //console.log($rootScope.playerList1);
-                      //console.log($rootScope.playerList2);
+                      console.log($rootScope.playerList1);
+                      console.log($rootScope.playerList2);
                     })
-                  })
-                }
+                  });
+                };
                 return res.data;
             });
         },

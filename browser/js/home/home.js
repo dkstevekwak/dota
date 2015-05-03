@@ -42,6 +42,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
       }
     };
     $scope.fillingSource = null;
+    $scope.winRate = 0;
     $scope.fillingHero = null;
     $scope.currentCategory = 'all';
     $scope.query = null;

@@ -48,14 +48,14 @@
                     <h6 ng-if="player.hasOwnProperty('tempHeroName')">{{player.tempHeroName}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempGames')">Games: {{player.tempGames}}</h6>
                     <h6 ng-if="player.hasOwnProperty('tempkda')">KDA: {{player.tempKda}}</h6>
-                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{player.tempWinRate*100}}%</h6>
+                    <h6 ng-if="player.hasOwnProperty('tempWinRate')">WR: {{(player.tempWinRate).toFixed(2)*100).toFixed(2)}}%</h6>
                     <h6>Counters</h6>
                     <span>{{player.selectedHero.proficiency[0].name}}</span>
-                    <span> (Adv: {{player.selectedHero.proficiency[0].advantage*100}}%)</span><br/>
+                    <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
                     <span>{{player.selectedHero.proficiency[1].name}}</span>
-                    <span>(Adv: {{player.selectedHero.proficiency[1].advantage*100}}%)</span><br/>
+                    <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
                     <span>{{player.selectedHero.proficiency[2].name}}</span>
-                    <span>(Adv: {{player.selectedHero.proficiency[2].advantage*100}}%)</span>
+                    <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
                 </div>
             </div>
         </div>

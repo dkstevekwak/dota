@@ -7,20 +7,23 @@ var connectToDb = require('./server/db');
 var User = mongoose.model('User');
 var HeroStat = mongoose.model('heroStat');
 var request = require('request');
+var _ = require('lodash');
 
 //generates the hero list of everyone except abaddon and adds them to database!
 
 connectToDb.then(function () {
   $ = cheerio.load(rawHeroList);
-  var array = ['abaddon'];
+  var array = [];
   $('tr').each(function(i,elem){
     array.push($(this).find("img").attr('alt'));
   });
   array.shift(); //generates list of hero names
+  array.unshift('abaddon');
+  console.log('here is the array', array);
   var heroArr = array.map(function(el){
-    return el.toLowerCase().replace(/\s/g, '-').replace("\'", '');
+    return (el) ? el.toLowerCase().replace(/\s/g, '-').replace("\'", '') : el;
   });
-
+  console.log('here is heroArr ', heroArr);
   var results = [];
   async.eachLimit(heroArr, 1, function(heroName, done){
     console.log('starting async');
@@ -58,15 +61,18 @@ connectToDb.then(function () {
         console.log(tempObj);
         obj.proficiency.push(tempObj);
       });
-      var hero = new HeroStat(obj);
-      hero.save(function(err, heroData){
-        if (err) console.log(err);
-        setTimeout(function(){
-          done();
-        }, 3000);
-        //console.log(obj);
-        //console.log('hero created?!', heroData);
+      console.log('heres the obj.heroName', obj.heroName);
+      HeroStat.findOne({heroName: obj.heroName}, function(err, foundHero){
+        _.assign(foundHero, obj);
+        foundHero.save(function(err, savedHero){
+          if (err) console.log(err);
+            done();
+
+          //console.log(obj);
+          //console.log('hero created?!', heroData);
+        })
       })
+
     })
   }, function(err){
     if (err) console.log('uh oh error', err);

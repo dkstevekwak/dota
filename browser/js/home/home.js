@@ -42,6 +42,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
       }
     };
     $scope.fillingSource = null;
+    $scope.winRate = 0;
     $scope.fillingHero = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
@@ -55,8 +56,10 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
             player.selectedHero = $scope.fillingHero;
             var found = false;
             player.proficiency.forEach(function(each){
-                var uniformName = each.name.replace(" ","-").toLowerCase();
-                if (uniformName === player.selectedHero.heroName) {
+                console.log('here is each', each);
+                if (each.name) {
+                  var uniformName = each.name.replace(" ","-").toLowerCase();
+                  if (uniformName === player.selectedHero.heroName) {
                     //console.log(each, player)
                     found = true;
                     player.tempHeroName = each.name;
@@ -65,11 +68,13 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempWinRate = Number(each.winRate);
                     //console.log('here is tempWinRate', typeof player.tempWinRate, player.tempWinRate)
                     if(player.tempMessage) player.tempMessage = null;
-                }
+                  }
+                }//error handling for bad data
+
             });
             if (!found) {
               $scope.choices.forEach(function(each){
-                  console.log('scope.choices causing error');
+                  //console.log('scope.choices causing error');
                   var uniformName = each.heroName.replace(" ","-").toLowerCase();
                   if (uniformName === player.selectedHero.heroName) {
                     //console.log(each, player)
@@ -79,7 +84,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempHeroName = each.heroName;
                     player.tempGames = "not applicable"
                     player.tempKda = each.kda;
-                    console.log(each.winRate, each.winRate == true);
+                    //console.log(each.winRate, each.winRate == true);
                     player.tempWinRate = (each.winRate)? Number(each.winRate) : null;
                     if(player.tempMessage) player.tempMessage = null;
                   }
@@ -95,16 +100,16 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
       var count = 0;
       $rootScope.playerList1.forEach(function(player1){
         if (player1.tempHeroName) {//if user chose already
-          console.log(player1.tempHeroName);
+          //console.log(player1.tempHeroName);
           player1.selectedHeroDetails = findHero(player1.tempHeroName, $scope.choices);
-          console.log('selectedHeroDetails', player1.selectedHeroDetails); //works for single word hero names only
+          //console.log('selectedHeroDetails', player1.selectedHeroDetails);
 
           $rootScope.playerList2.forEach(function(player2){
             if (player2.tempHeroName) {
               console.log('player 2 tempHeroName', player2.tempHeroName);
               for (var hero in player1.selectedHeroDetails.proficiency){
-                console.log('hero.name in player1.selectedHeroProficiency', hero);
-                if (player1.selectedHeroDetails.proficiency[hero].name == player2.tempHeroName){
+                console.log('hero.name in player1.selectedHeroProficiency', player1.selectedHeroDetails.proficiency[hero].name, ' ', player2.tempHeroName);
+                if (player1.selectedHeroDetails.proficiency[hero].name.replace(" ","-").toLowerCase() == player2.tempHeroName.replace(" ","-").toLowerCase()){
                   $scope.winRate += Number(player1.selectedHeroDetails.proficiency[hero].advantage);
                 }
               }

@@ -1,6 +1,24 @@
 #playerPopulate {
-  margin-top: 5%;
-  .log {
-    width: 50%;
+  margin: 5% auto;
+  width: 80%;
+  .userInput{
+    margin: 0 auto;
   }
+  .window, .mac {
+    margin-bottom: 5px;
+  }
+  h3{
+    text-align: center;
+    color: #A63727;
+    margin-bottom: 15px;
+  }
+  h6 {
+    color: navy;
+  }
+  #logBtn {
+    margin-top: 10px;
+    width: 100%;
+
+  }
+
 }

@@ -3,13 +3,14 @@
         <div class="navbar-header">
         </div>
         <ul class="nav navbar-nav">
-            <li><img class="logo" src="http://38.media.tumblr.com/c65016474b34884e76979327f77aa601/tumblr_mzx98kCg8T1qadsijo1_1280.png"/></li>
+            <li><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            <li><a class='logo' ui-sref="hone">DotaSight</a></li>
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
         </ul>
-        <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-        <button ng-click="openModal()" class="btn login-button">Get Player Info</button>
+        <button ng-hide="!user" ui-sref="login" class="btn btn-default login-button">Login</button>
+        <button ng-click="openModal()" class="btn btn-default login-button">Enter Your Game Info</button>
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.email }}!</span>
             <a ng-click="logout()">Logout</a>

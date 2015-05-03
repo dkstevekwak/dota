@@ -16,9 +16,7 @@ app.directive('navbar', function ($modal, $rootScope, AuthService, AUTH_EVENTS, 
 
             scope.items = [
                 { label: 'Home', state: 'home' },
-                { label: 'About', state: 'about' },
-                { label: 'Tutorial', state: 'tutorial' },
-                { label: 'Members Only', state: 'membersOnly', auth: true }
+                { label: 'Tutorial', state: 'tutorial' }
             ];
 
             scope.user = null;

@@ -20,7 +20,7 @@ app.factory('Main', function($http, $rootScope){
           })
           results.push(newGroup);
         }); //an array of arrays of friend Ids in a group
-        return results;
+        return results.slice(-1);
       }
       else {
         return null;
@@ -35,6 +35,7 @@ app.factory('Main', function($http, $rootScope){
         getPlayerPopulate: function(log){
           var self = this;
           var groupData = log.match(/\(Party\s\d+(\s\d:\[U:\d:\d+\])+\)/g);
+          console.log('here is the group Data', groupData);
           var filteredLog = log.replace(/\(Party\s\d+(\s\d:\[U:\d:\d+\])+\)/g,"");
           var cleanGroupData = calculateGroupData(groupData);
           console.log('here is the clean Group Data! ', cleanGroupData);
@@ -48,7 +49,7 @@ app.factory('Main', function($http, $rootScope){
                 $rootScope.playerList1 = res.data.slice(0,5);
                 $rootScope.playerList2 = res.data.slice(5);
                 $rootScope.groupData = cleanGroupData;
-                if (cleanGroupData.length) {
+                if (cleanGroupData && cleanGroupData.length) {
                   cleanGroupData.forEach(function(group, idx){
                     group.forEach(function(playerId){
                       $rootScope.playerList1.forEach(function(list1Player){

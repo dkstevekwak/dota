@@ -78,7 +78,6 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
         }
     };
 
-
     $scope.getPercentage = function(w,l){
         return Math.round(parseInt(w)/(parseInt(w)+parseInt(l))*10000)/100 + "%"
     };

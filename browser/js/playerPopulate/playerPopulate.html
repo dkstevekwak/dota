@@ -1,10 +1,13 @@
 <div id="playerPopulate">
     <div>
-        <p>This will auto-populate your team and the enenmies' data
-        You can copy paste the entire server_log.txt, or just the last couple lines. Found in
-        Window -> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\dota\
-        Mac -> /Library/Application Support/Steam/steamapps/common/dota 2 beta/dota</p>
-        <textarea rows="6" class="log form-control" ng-model= "playerLog.content" type="textarea" placeholder="copy and paste your server_log.txt here"></textarea>
-        <button class="btn btn-default" ng-click="sendLog(playerLog.content)">Send</button>
+        <h3>Welcome to DotaSight</h3>
+        <h5>This will auto-populate your team and the enemies' data.
+        You can copy and paste the entire server_log.txt, or just the last couple lines.</h5>
+        <h6><button class="window btn btn-default">Window</button><br/> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\dota\</h6>
+        <h6><button class="mac btn btn-default">Mac</button><br/>/Library/Application Support/Steam/steamapps/common/dota 2 beta/dota</h6>
+        <div class="userInput">
+            <textarea rows="6" class="log form-control" ng-model= "playerLog.content" type="textarea" placeholder="copy and paste your server_log.txt here"></textarea>
+            <button id="logBtn" class="btn btn-default" ng-click="sendLog(playerLog.content)">Send</button>
+        </div>
     </div>
 </div>

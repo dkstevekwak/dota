@@ -6,18 +6,36 @@
     margin-top: 40px;
     text-align: center;
   }
+  .overallStat {
+  }
+  .heroName {
+    color:#f30046;
+  }
+  .counters {
+    border-top: 1px solid skyblue;
+    border-bottom: 1px solid skyblue;
+    padding: 5px 0;
+    h5 {
+      color: #f30046;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
   .allies {
-    background: skyblue;
+    margin-top: 20px;
+    border: 2px solid skyblue;
     height: 400px;
   }
   .enemies {
-    background: lightgoldenrodyellow;
+    border: 2px solid orange;
     height: 400px;
     margin-bottom: 1%;
   }
   .heroChoice {
-    background: lightgray;
-    height: 900px;
+    border: 2px solid lightgray;
+    margin-top: 20px;
+    height: 919px;
     text-align: center;
     overflow-y: scroll;
     input {
@@ -29,6 +47,9 @@
     text-align: center;
     float:left;
     width: 20%;
+    image {
+      border: 3px solid;
+    }
   }
   .playerImage {
     //position:absolute;
@@ -40,21 +61,23 @@
   }
   .eachChoice {
     text-align: center;
+    height: 70px;
+    padding-right: 12px;
+    padding-left: 12px;
     h5{
       position:inherit;
       bottom:26px;
       color: white;
       z-index: 0;
     }
-    image{
+    img{
       width:100%;
-
 
     }
   }
   .stats {
+    margin: 10px;
     height: 100px;
-    background: lightcyan;
     text-align: center;
   }
   .categories{
@@ -99,6 +122,9 @@
     text-transform: uppercase;
     color: #616363;
     font-size: 16px;
+  }
+  .playerName {
+    color: #f30046;
   }
 }
 

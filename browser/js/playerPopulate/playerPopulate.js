@@ -9,8 +9,11 @@ app.config(function ($stateProvider) {
 
 app.controller('PlayerPopulateController', function($modalInstance, $http, $scope, Main){
     $scope.playerLog = null;
+    $scope.loading = false;
     $scope.sendLog = function(log){
+        $scope.loading = true;
         Main.getPlayerPopulate(log).then(function(res){
+            $scope.loading = false;
             $modalInstance.close();
         });
     }

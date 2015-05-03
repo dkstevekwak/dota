@@ -3,6 +3,11 @@
   width: 80%;
   .userInput{
     margin: 0 auto;
+    img {
+      position: relative;
+      left:36%;
+      margin: 10px 0;
+    }
   }
   .window, .mac {
     margin-bottom: 5px;

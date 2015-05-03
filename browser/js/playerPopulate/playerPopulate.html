@@ -6,6 +6,7 @@
         <h6><button class="window btn btn-default">Window</button><br/> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\dota\</h6>
         <h6><button class="mac btn btn-default">Mac</button><br/>/Library/Application Support/Steam/steamapps/common/dota 2 beta/dota</h6>
         <div class="userInput">
+            <img ng-show="loading" src="https://s-media-cache-ak0.pinimg.com/originals/2b/78/57/2b7857dd05e81cc1ca5782a1f402e3dd.jpg">
             <textarea rows="6" class="log form-control" ng-model= "playerLog.content" type="textarea" placeholder="copy and paste your server_log.txt here"></textarea>
             <button id="logBtn" class="btn btn-default" ng-click="sendLog(playerLog.content)">Send</button>
         </div>

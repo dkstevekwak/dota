@@ -15,11 +15,11 @@ var client = memjs.Client.create(process.env.MEMCACHEDCLOUD_SERVERS, {
 });
 module.exports = router;
 //client.set("allHeroes", "bar");
-client.get("foo", function (err, value, key) {
-  if (value != null) {
-    console.log(value.toString()); // Will print "bar"
-  }
-});
+//client.get("foo", function (err, value, key) {
+//  if (value != null) {
+//    console.log(value.toString()); // Will print "bar"
+//  }
+//});
 
 router.get('/', function(req,res,next){
     client.get('AllHeroes', function (err, value, key) {
@@ -28,6 +28,7 @@ router.get('/', function(req,res,next){
         res.send(value);
       } else {
         Heroes.find({}, function(err,heroes){
+          console.log('memcached not used!');
           if (err) return next(err);
           var sortedHeroes = heroes.sort(function(a,b){
             //console.log(a.order);

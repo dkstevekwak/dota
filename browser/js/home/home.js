@@ -36,8 +36,8 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
       //console.log('heroArr: ', heroArr);
       //console.log('scope choices ' , $scope.choices);
       for (var hero in heroArr ){
-        //console.log('hero', ' ', heroArr[hero]);
-        if (heroArr[hero].heroName.replace(" ","-").toLowerCase() == heroName.toLowerCase()) return heroArr[hero];
+        console.log('hero', ' ', heroArr[hero]);
+        if (heroArr[hero].heroName.replace(" ","-").toLowerCase() == heroName.replace(" ","-").toLowerCase()) return heroArr[hero];
       }
     };
     $scope.fillingSource = null;
@@ -102,9 +102,10 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
       var count = 0;
       $rootScope.playerList1.forEach(function(player1){
         if (player1.tempHeroName) {//if user chose already
-          //console.log(player1.tempHeroName);
+          console.log(player1.tempHeroName);
+          console.log($scope.choices);
           player1.selectedHeroDetails = findHero(player1.tempHeroName, $scope.choices);
-          //console.log('selectedHeroDetails', player1.selectedHeroDetails);
+          console.log('selectedHeroDetails', player1.selectedHeroDetails);
 
           $rootScope.playerList2.forEach(function(player2){
             if (player2.tempHeroName) {

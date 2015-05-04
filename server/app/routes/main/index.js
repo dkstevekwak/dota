@@ -2,22 +2,50 @@
 var router = require('express').Router();
 var Heroes = require('mongoose').model('heroStat');
 var PersonalStat = require('mongoose').model('personalStat');
+var Log = require('mongoose').model('Log');
 var async = require('async');
 var cheerio = require('cheerio');
 var request = require('request');
 var _ = require('lodash');
+var memjs = require('memjs');
+
+var client = memjs.Client.create(process.env.MEMCACHEDCLOUD_SERVERS, {
+  username: process.env.MEMCACHEDCLOUD_USERNAME,
+  password: process.env.MEMCACHEDCLOUD_PASSWORD
+});
 module.exports = router;
+//client.set("allHeroes", "bar");
+//client.get("foo", function (err, value, key) {
+//  if (value != null) {
+//    console.log(value.toString()); // Will print "bar"
+//  }
+//});
 
 router.get('/', function(req,res,next){
-    Heroes.find({}, function(err,heroes){
-        if (err) return next(err);
-        var sortedHeroes = heroes.sort(function(a,b){
-          //console.log(a.order);
-          return a.order - b.order;
-        });
-        //console.log(sortedHeroes.slice(0, 2).order);
-      res.send(sortedHeroes);
-    })
+    client.get('AllHeroes', function (err, value, key) {
+      if (value != null) {
+        console.log('using memcached');
+        //console.log(value.toString());
+        res.send(JSON.parse(value.toString()));
+      } else {
+        Heroes.find({}, function(err,heroes){
+          console.log('memcached not used!');
+          if (err) return next(err);
+          var sortedHeroes = heroes.sort(function(a,b){
+            console.log(a.order);
+            return a.order - b.order;
+          });
+
+          client.set('AllHeroes', JSON.stringify(sortedHeroes), function(err, val){
+            console.log('stored val: ', val);
+          });
+          //console.log(sortedHeroes.slice(0, 2).order);
+          res.send(sortedHeroes);
+        })
+      }
+    });
+
+
 });
 
 router.put('/:heroId', function(req,res,next){
@@ -32,6 +60,7 @@ router.put('/:heroId', function(req,res,next){
 });
 router.post('/serverLog', function(req, res, next){
   console.log('we are inside server log');
+
   var entireString = req.body.log;
   function getFriendId () {
     var pat = /U:1:(\d*)/g;
@@ -43,11 +72,14 @@ router.post('/serverLog', function(req, res, next){
     console.log('hoping this runs before serverLog', arrToReturn);
     return arrToReturn;
   };
+
   var allFriendIDs = getFriendId();
 
   var lastTenFriendIDs = allFriendIDs.slice(-10);
   //console.log(lastTenFriendIDs);
-
+  Log.create({info: lastTenFriendIDs.toString()}, function(err, savedLog){
+    console.log('log created', savedLog._id);
+  });
 
   console.log('here is the hypothetical list of friends ', lastTenFriendIDs );
   var results = [];

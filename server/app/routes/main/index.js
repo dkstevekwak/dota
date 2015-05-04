@@ -26,7 +26,7 @@ router.get('/', function(req,res,next){
       if (value != null) {
         console.log('using memcached');
         console.log(value.toString());
-        res.send(value.toString());
+        res.json(value.toString());
       } else {
         Heroes.find({}, function(err,heroes){
           console.log('memcached not used!');
@@ -35,8 +35,8 @@ router.get('/', function(req,res,next){
             console.log(a.order);
             return a.order - b.order;
           });
-          console.log(sortedHeroes);
-          client.set('AllHeroes', sortedHeroes, function(err, val){
+
+          client.set('AllHeroes', JSON.stringify(sortedHeroes), function(err, val){
             console.log('stored val: ', val);
           });
           //console.log(sortedHeroes.slice(0, 2).order);

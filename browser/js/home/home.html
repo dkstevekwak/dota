@@ -3,12 +3,19 @@
         <div class="allies col-xs-12">
             <h4 class="team">RADIANT</h4>
             <div class="eachAlly" ng-repeat="player in playerList1">
-                <h4 class="playerName">{{player.user}}</h4>
+                <h4 class="playerName">{{truncateName(player.user)}}</h4>
                 <img ng-style="{'border': '2px solid {{colors[player.color]}}'}" ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
                 <div class="overallStat" ng-if="player.userInfo[0].length && !player.selectedHero">
                     <h6><b>LastMatch:</b> {{player.userInfo[0]}}</h6>
                     <h6><b>W-L-A:</b> {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
                     <h6><b>Win %:</b> {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
+                    <div class="twoBest">
+                        <h6 class="title">Two Most Played</h6>
+                        <h6 class="heroOne">{{player.proficiency[0].name}}</h6>
+                        <h6><b>Games:</b>{{player.proficiency[0].games}},<b>WR:</b>{{(player.proficiency[0].winRate*100).toFixed(2)}}%</h6>
+                        <h6 class="heroTwo">{{player.proficiency[1].name}}</h6>
+                        <h6><b>Games:</b>{{player.proficiency[1].games}},<b>WR:</b>{{(player.proficiency[1].winRate*100).toFixed(2)}}%</h6>
+                    </div>
                 </div>
                 <div ng-if="!player.userInfo[0].length">
                     <h6>This user's info is not available</h6>
@@ -47,12 +54,19 @@
         <div class="enemies col-xs-12">
             <h4 class="team">DIRE</h4>
             <div class="eachEnemy" ng-repeat="player in playerList2">
-                <h4 class="playerName">{{player.user}}</h4>
+                <h4 class="playerName">{{truncateName(player.user)}}</h4>
                 <img ng-style="{'border': '2px solid {{colors[player.color]}}'}" ng-click='setChoice(player)' class="playerImage" src="{{player.selectedHero.heroImage}}" />
                 <div class="overallStat" ng-if="player.userInfo[0].length && !player.selectedHero">
                     <h6><b>LastMatch:</b> {{player.userInfo[0]}}</h6>
                     <h6><b>W-L-A:</b> {{player.userInfo[1]}}-{{player.userInfo[2]}}-{{player.userInfo[3]}}</h6>
                     <h6><b>Win %:</b> {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
+                    <div class="twoBest">
+                        <h6 class="title">Two Most Played</h6>
+                        <h6 class="heroOne">{{player.proficiency[0].name}}</h6>
+                        <h6><b>Games:</b>{{player.proficiency[0].games}},<b>WR:</b>{{(player.proficiency[0].winRate*100).toFixed(2)}}%</h6>
+                        <h6 class="heroTwo">{{player.proficiency[1].name}}</h6>
+                        <h6><b>Games:</b>{{player.proficiency[1].games}},<b>WR:</b>{{(player.proficiency[1].winRate*100).toFixed(2)}}%</h6>
+                    </div>
                 </div>
                 <div ng-if="!player.userInfo[0].length">
                     <h6>This user's info is not available</h6>

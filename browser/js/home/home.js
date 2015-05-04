@@ -10,7 +10,6 @@ app.config(function ($stateProvider) {
 app.controller('HomeController', function($http, $rootScope, $scope, Main){
     Main.getHeroes().then(function(heroes){
         $scope.choices = heroes;
-        console.log(heroes);
     });
     $scope.colors = {
       0: "blue",
@@ -46,6 +45,10 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
     $scope.fillingHero = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
+    $scope.truncateName = function(name){
+        if(name.length>10) return name.substr(0,10)+"..";
+        else return name;
+    };
     $scope.setChoice = function(player){
       $scope.winRate = 0;
         if(player.selectedHero) {
@@ -56,7 +59,6 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
             player.selectedHero = $scope.fillingHero;
             var found = false;
             player.proficiency.forEach(function(each){
-                console.log('here is each', each);
                 if (each.name) {
                   var uniformName = each.name.replace(" ","-").toLowerCase();
                   if (uniformName === player.selectedHero.heroName) {
@@ -106,16 +108,15 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
 
           $rootScope.playerList2.forEach(function(player2){
             if (player2.tempHeroName) {
-              console.log('player 2 tempHeroName', player2.tempHeroName);
               for (var hero in player1.selectedHeroDetails.proficiency){
-                console.log('hero.name in player1.selectedHeroProficiency', player1.selectedHeroDetails.proficiency[hero].name, ' ', player2.tempHeroName);
+                //console.log('hero.name in player1.selectedHeroProficiency', player1.selectedHeroDetails.proficiency[hero].name, ' ', player2.tempHeroName);
                 if (player1.selectedHeroDetails.proficiency[hero].name.replace(" ","-").toLowerCase() == player2.tempHeroName.replace(" ","-").toLowerCase()){
                   $scope.winRate += Number(player1.selectedHeroDetails.proficiency[hero].advantage);
                 }
               }
             }
           })
-          console.log('the current running advantage: ', $scope.winRate);
+          //console.log('the current running advantage: ', $scope.winRate);
         }
       })
     };

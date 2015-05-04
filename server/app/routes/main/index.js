@@ -32,10 +32,13 @@ router.get('/', function(req,res,next){
           console.log('memcached not used!');
           if (err) return next(err);
           var sortedHeroes = heroes.sort(function(a,b){
-            //console.log(a.order);
+            console.log(a.order);
             return a.order - b.order;
           });
-          client.set('AllHeroes', sortedHeroes);
+          console.log(sortedHeroes);
+          client.set('AllHeroes', sortedHeroes, function(err, val){
+            console.log('stored val: ', val);
+          });
           //console.log(sortedHeroes.slice(0, 2).order);
           res.send(sortedHeroes);
         })

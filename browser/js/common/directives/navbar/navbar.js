@@ -7,6 +7,7 @@ app.directive('navbar', function ($modal, $rootScope, AuthService, AUTH_EVENTS, 
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
             scope.openModal = function() {
+                $state.go('home');
                 var modalInstance = $modal.open({
                     templateUrl: '/js/playerPopulate/playerPopulate.html',
                     controller: 'PlayerPopulateController',

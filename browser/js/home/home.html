@@ -12,6 +12,15 @@
                 </div>
                 <div ng-if="!player.userInfo[0].length">
                     <h6>This user's info is not available</h6>
+                    <div ng-if="player.selectedHero" class="counters">
+                        <h5>Counters</h5>
+                        <span>{{player.selectedHero.proficiency[0].name}}</span>
+                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[1].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span>{{player.selectedHero.proficiency[2].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                    </div>
                 </div>
                 <div ng-if="player.userInfo[0].length && player.selectedHero">
                     <h6 ng-if="player.hasOwnProperty('tempMessage')">{{player.tempMessage}}</h6>

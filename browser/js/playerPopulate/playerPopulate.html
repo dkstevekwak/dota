@@ -3,11 +3,11 @@
         <h3>Welcome to DotaSight</h3>
         <h5>This will auto-populate your team and the enemies' data.
         You can copy and paste the entire server_log.txt, or just the last couple lines.</h5>
-        <h6><button class="window btn btn-default">Window</button><br/> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\dota\</h6>
-        <h6><button class="mac btn btn-default">Mac</button><br/>/Library/Application Support/Steam/steamapps/common/dota 2 beta/dota</h6>
+        <h6>Windows<br/> C:\Program Files (x86)\Steam\steamapps\common\dota 2 beta\dota\</h6>
+        <h6>MAC<br/>/Library/Application Support/Steam/steamapps/common/dota 2 beta/dota</h6>
         <div class="userInput">
             <img ng-show="loading" src="https://s-media-cache-ak0.pinimg.com/originals/2b/78/57/2b7857dd05e81cc1ca5782a1f402e3dd.jpg">
-            <textarea rows="6" class="log form-control" ng-model= "playerLog.content" type="textarea" placeholder="copy and paste your server_log.txt here"></textarea>
+            <textarea rows="6" class="log form-control" ng-model= "playerLog.content" type="textarea" placeholder="Example) 05/03/2015 - 16:49:42: =[A:1:2040378377:5450] (Lobby 24002029299855750 DOTA_GAMEMODE_SD 0:[U:1:176937570] 1:[U:1:173721232] 2:[U:1:97006728] 3:[U:1:106431233] 4:[U:1:107908561] 5:[U:1:43415841] 6:[U:1:209562277] 7:[U:1:8217205] 8:[U:1:118796223] 9:[U:1:209893205])..........."></textarea>
             <button id="logBtn" class="btn btn-default" ng-click="sendLog(playerLog.content)">Send</button>
         </div>
     </div>

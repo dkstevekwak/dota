@@ -26,7 +26,7 @@ router.get('/', function(req,res,next){
       if (value != null) {
         console.log('using memcached');
         console.log(value.toString());
-        res.json(value.toString());
+        res.send(JSON.parse(value.toString()));
       } else {
         Heroes.find({}, function(err,heroes){
           console.log('memcached not used!');

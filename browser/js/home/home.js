@@ -42,6 +42,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
     };
     $scope.fillingSource = null;
     $scope.winRate = 0;
+  $scope.weightFactor1 = 0;
     $scope.fillingHero = null;
     $scope.currentCategory = 'all';
     $scope.query = null;
@@ -68,6 +69,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempGames = each.games;
                     player.tempKda = each.kda;
                     player.tempWinRate = Number(each.winRate);
+                    player.tempWeightedWinRate = (each.games >= 5) ? (player.tempWinRate * 0.1) : (0.05);
                     //console.log('here is tempWinRate', typeof player.tempWinRate, player.tempWinRate)
                     if(player.tempMessage) player.tempMessage = null;
                   }
@@ -88,6 +90,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempKda = each.kda;
                     //console.log(each.winRate, each.winRate == true);
                     player.tempWinRate = (each.winRate)? Number(each.winRate) : null;
+                    player.tempWeightedWinRate = (each.games >= 5) ? (player.tempWinRate * 0.1) : (0.05);
                     if(player.tempMessage) player.tempMessage = null;
                   }
               });
@@ -120,7 +123,27 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
           //console.log('the current running advantage: ', $scope.winRate);
         }
       })
+      $scope.calculateWeightedAdvantage();
     };
+  $scope.calculateWeightedAdvantage = function(){
+    $scope.weightFactor1 = 0;
+    $rootScope.playerList1.forEach(function(player1){
+      if (player1.tempHeroName) {//if user chose already
+        console.log('p1', player1.tempWeightedWinRate);
+        $scope.weightFactor1 += Number(player1.tempWeightedWinRate);
+      };
+    });
+    $rootScope.playerList2.forEach(function(player2){
+      if (player2.tempHeroName) {
+        console.log('p2', player2.tempWeightedWinRate);
+        $scope.weightFactor1 -= Number(player2.tempWeightedWinRate);
+      };
+    });
+      console.log('wf1', $scope.weightFactor1);
+      console.log('wr', $scope.winRate);
+      $scope.weightFactor1 += Number($scope.winRate);
+  };
+
     $scope.getPercentage = function(w,l){
         return Math.round(parseInt(w)/(parseInt(w)+parseInt(l))*10000)/100 + "%"
     };

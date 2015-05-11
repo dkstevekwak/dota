@@ -93,6 +93,7 @@ router.post('/serverLog', function(req, res, next){
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36' }
     };
     request(options, function (error, response, body) {
+      console.log(body);
       var $ = cheerio.load(body);
       var array = [];
       $('tr').each(function(i,elem){

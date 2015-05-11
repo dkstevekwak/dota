@@ -7,7 +7,8 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function($http, $rootScope, $scope, Main){
+app.controller('HomeController', function($http, $rootScope, $scope, Main, $location, $modal){
+
     Main.getHeroes().then(function(heroes){
         $scope.choices = heroes;
     });
@@ -69,7 +70,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempGames = each.games;
                     player.tempKda = each.kda;
                     player.tempWinRate = Number(each.winRate);
-                    player.tempWeightedWinRate = (each.games >= 5) ? (player.tempWinRate * 0.1) : (0.05);
+                    player.tempWeightedWinRate = (each.games >= 5) ? (player.tempWinRate * 0.15) : (0.05);
                     //console.log('here is tempWinRate', typeof player.tempWinRate, player.tempWinRate)
                     if(player.tempMessage) player.tempMessage = null;
                   }
@@ -90,7 +91,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
                     player.tempKda = each.kda;
                     //console.log(each.winRate, each.winRate == true);
                     player.tempWinRate = (each.winRate)? Number(each.winRate) : null;
-                    player.tempWeightedWinRate = (each.games >= 5) ? (player.tempWinRate * 0.1) : (0.05);
+                    player.tempWeightedWinRate = (each.games >= 5) ? (player.tempWinRate * 0.15) : (0.05);
                     if(player.tempMessage) player.tempMessage = null;
                   }
               });
@@ -436,5 +437,16 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main){
         //    proficiency: []
         //}
 
-
+    var searchObject = $location.search();
+    console.log('searchObject', searchObject);
+    if (searchObject) {
+      $rootScope.serverLogs = searchObject.logs;
+    }
+    if ($rootScope.serverLogs) {
+      $modal.open({
+        templateUrl: '/js/playerPopulate/playerPopulate.html',
+        controller: 'PlayerPopulateController',
+        size: 'lg'
+      });
+    }
 });

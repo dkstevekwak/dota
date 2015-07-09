@@ -135,7 +135,12 @@ router.post('/serverLog', function(req, res, next){
   //push to database based on friendID
   //create a proficiency hash object
   //pass to front end
-});
+}); //this responds with 10 player specific data
+
+router.post('/report', function(req, res, next){
+  var log = req.body.log;
+  //TODO do something with the log...
+})
 
 
 

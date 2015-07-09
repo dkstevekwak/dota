@@ -3,8 +3,8 @@ var path = require('path');
 var express = require('express');
 var app = express();
 var variables = require('../env/');
-var steam = require('steamidconvert')();
-var request = require('request');
+//var steam = require('steamidconvert')(); //not used;
+//var request = require('request');
 var fs = require('fs');
 
 module.exports = app;

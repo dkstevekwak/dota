@@ -18,7 +18,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
       1: "red",
       2: "purple",
       3: "pink"
-    };
+    }; //not necessary
     $rootScope.playerList1 = [
         {user:'player A', selectedHero: null},
         {user:'player B'},

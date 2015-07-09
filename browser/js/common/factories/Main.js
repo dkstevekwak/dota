@@ -31,6 +31,7 @@ app.factory('Main', function($http, $rootScope){
           return $http.post('/api/main/report', {
             log: $rootScope.serverLogs
           }).then(function(res){
+            console.log($rootScope.serverLogs);
             return "Reported";
           })
         },

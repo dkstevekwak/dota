@@ -140,6 +140,7 @@ router.post('/serverLog', function(req, res, next){
 
 router.post('/report', function(req, res, next){
   var logBody = req.body.log;
+  console.log('here is req.body.log', logBody);
   Report.create({log: logBody}, function(err, logs){
     if (err) return next(err);
     console.log('report created!');

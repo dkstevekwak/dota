@@ -1,11 +1,12 @@
 'use strict';
-app.directive('navbar', function ($modal, $rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($modal, $rootScope, AuthService, AUTH_EVENTS, $state, Main) {
 
     return {
         restrict: 'E',
         scope: {},
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
+            scope.reported_text = "Report this Log";
             scope.openModal = function() {
                 $state.go('home');
                 var modalInstance = $modal.open({
@@ -20,6 +21,12 @@ app.directive('navbar', function ($modal, $rootScope, AuthService, AUTH_EVENTS, 
                     templateUrl: '/js/playerPopulate/survey.html',
                     controller: 'SurveyController',
                     size: 'lg'
+                });
+            };
+
+            scope.reportLog = function() {
+                Main.reportLogs().then(function(result){
+                    scope.reported_text = result;
                 });
             };
 

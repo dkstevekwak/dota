@@ -15,6 +15,8 @@ require('./models/user');
 require('./models/personalStats');
 require('./models/heroStats');
 require('./models/logs');
+require('./models/reports');
+
 
 var startDbPromise = new Q(function (resolve, reject) {
     db.on('open', resolve);

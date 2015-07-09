@@ -1,7 +1,8 @@
 'use strict';
 var router = require('express').Router();
 var Heroes = require('mongoose').model('heroStat');
-var PersonalStat = require('mongoose').model('personalStat');
+var PersonalStat = require('mongoose').model('personalStat'); //not used
+var Report = require('mongoose').model('Report');
 var Log = require('mongoose').model('Log');
 var async = require('async');
 var cheerio = require('cheerio');
@@ -138,8 +139,13 @@ router.post('/serverLog', function(req, res, next){
 }); //this responds with 10 player specific data
 
 router.post('/report', function(req, res, next){
-  var log = req.body.log;
-  //TODO do something with the log...
+  var logBody = req.body.log;
+  Report.create({log: logBody}, function(err, logs){
+    if (err) return next(err);
+    console.log('report created!');
+    res.sendStatus(200);
+    res.end();
+  })
 })
 
 

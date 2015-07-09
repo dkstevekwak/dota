@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="FullstackGeneratedApp">
 <head>
     <base href="/" />
-    <title>Dota-Sight</title>
+    <title ng-bind="metatags.title"></title>
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <script src="/lodash/lodash.js"></script>
@@ -13,9 +13,10 @@
     <script src="/socket.io-client/socket.io.js"></script>
     <script src="/main.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="/angular-metatags.js"></script>
 
 </head>
-<body ng-app="FullstackGeneratedApp">
+<body>
     <navbar></navbar>
     <div ui-view></div>
     <script>

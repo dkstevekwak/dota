@@ -31,7 +31,7 @@ connectToDb.then(function () {
   var results = [];
   async.eachLimit(heroArr, 1, function(heroName, done){
     console.log('starting async');
-    var tempUrl = 'http://www.dotabuff.com/heroes/' + heroName + '/matchups?date=patch_6.84';
+    var tempUrl = 'http://www.dotabuff.com/heroes/' + heroName + '/matchups?date=patch_6.84b';
     var options = {
       url: tempUrl,
       headers: {

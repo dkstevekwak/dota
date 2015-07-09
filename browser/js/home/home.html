@@ -110,6 +110,7 @@
             <button ng-class="{'ready': currentCategory==='strength'}" type="button" ng-click="setCategory('strength')" class="strength btn btn-default">Strength</button>
             <button ng-class="{'ready': currentCategory==='agility'}" type="button" ng-click="setCategory('agility')" class="agility btn btn-default">Agility</button>
             <button ng-class="{'ready': currentCategory==='intelligence'}" type="button" ng-click="setCategory('intelligence')" class="intelligence btn btn-default">Intelligence</button>
+            <button type="button" ng-click="clearHero(); setCategory('all')" class="reset btn btn-default">Clear</button>
         </div>
         <div class="col-xs-3 eachChoice" ng-show="currentCategory==='all' || choice.heroType===currentCategory" ng-repeat="choice in choices | filter: search" ng-click="setHero(choice)">
             <img ng-class="{'ready': fillingHero.heroImage===choice.heroImage}" src="{{choice.heroImage}}"/>

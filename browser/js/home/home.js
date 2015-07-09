@@ -73,7 +73,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
                     //console.log('here is tempWinRate', typeof player.tempWinRate, player.tempWinRate)
                     if(player.tempMessage) player.tempMessage = null;
                   }
-                }//error handling for bad data
+                }// TODO error handling for bad data
 
             });
             if (!found) {
@@ -171,9 +171,13 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
 
     $scope.setCategory = function(category){
         $scope.currentCategory = category;
+        console.log($scope.currentCategory);
     };
 
     $scope.choices = [];
+    $scope.clearHero = function(){
+      $scope.fillingHero = null;
+    }
 
     function parseName(name){
       return name.replace(" ","-").toLowerCase();

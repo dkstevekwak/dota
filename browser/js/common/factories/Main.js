@@ -27,6 +27,14 @@ app.factory('Main', function($http, $rootScope){
       }
     }
     return{
+        reportLogs: function(){
+          return $http.post('/api/main/report', {
+            log: $rootScope.serverLogs
+          }).then(function(res){
+            console.log($rootScope.serverLogs);
+            return "Reported";
+          })
+        },
         getHeroes: function(){
             return $http.get('/api/main/').then(function(res){
                 return res.data;

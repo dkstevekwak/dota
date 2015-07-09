@@ -1,43 +1,15 @@
 'use strict';
-var app = angular.module('FullstackGeneratedApp', ['ui.router', 'fsaPreBuilt', 'ui.bootstrap', 'angular-ui-router-metatags']);
+var app = angular.module('FullstackGeneratedApp', ['ui.router', 'fsaPreBuilt', 'ui.bootstrap']);
 
-app.config(function ($urlRouterProvider, $locationProvider, MetaTagsProvider) {
+app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
     $locationProvider.html5Mode(true);
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
     $urlRouterProvider.otherwise('/');
-    MetaTagsProvider
-      .when('home', {
-        title: 'Great',
-        description: 'Cool',
-        fb_title: 'My title',
-        fb_site_name: 'My site name',
-        fb_url: 'www.blablabla.blabla',
-        fb_description: 'Cool website',
-        fb_type: 'Facebook type',
-        fb_image: 'an_image.jpg'
-      })
-      .when('tutorial',{
-        title: 'tutorial',
-        description: function(parameter1, parameter2){
-          return 'COOOOOOOL' + parameter1 + " Super " + parameter2;
-        },
-        robots: 'index, follow',
-        keywords: 'some cool keywords'
-      })
-      .when('/page2/:parameter1',{
-        title: 'Page 2 of ' + parameter1,
-        description: 'Another great page'
-      })
-      .otherwise({
-        title: 'otherwise',
-        description: 'Another great page'
-      })
-      console.log('config ran');
 });
 
 // This app.run is for controlling access to specific states.
-app.run(function ($rootScope, AuthService, $state, $location, $window, MetaTags) {
+app.run(function ($rootScope, AuthService, $state, $location, $window) {
 
     // The given state requires an authenticated user.
     var destinationStateRequiresAuth = function (state) {
@@ -81,6 +53,5 @@ app.run(function ($rootScope, AuthService, $state, $location, $window, MetaTags)
             return;
           $window.ga('send', 'pageview', { page: $location.path() });
     });
-    MetaTags.initialize();
 
 });

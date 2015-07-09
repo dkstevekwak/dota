@@ -15,6 +15,7 @@ app.controller('PlayerPopulateController', function($modalInstance, $http, $scop
     $scope.sendLog = function(log){
         console.log('this should fire!');
         $scope.loading = true;
+        $rootScope.serverLogs = log;
         Main.getPlayerPopulate(log).then(function(res){
             $scope.loading = false;
             $modalInstance.close();

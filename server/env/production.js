@@ -24,12 +24,9 @@ module.exports = {
         "clientSecret": process.env.GOOGLE_CLIENT_SECRET,
         "callbackURL": process.env.CALLBACK_URL
     },
-    "STEAM": {
-      "clientID": "B6622CA506F173656A89DCB17CE8E454"
-    },
     "MEMCACHEDCLOUD": {
       "SERVERS": process.env.MEMCACHEDCLOUD_SERVERS,
       "USERNAME": process.env.MEMCACHEDCLOUD_USERNAME,
       "PASSWORD": process.env.MEMCACHEDCLOUD_PASSWORD
     }
-};
+}

@@ -15,11 +15,5 @@ module.exports = {
     "clientID": "INSERT_GOOGLE_CLIENTID_HERE",
     "clientSecret": "INSERT_GOOGLE_CLIENT_SECRET_HERE",
     "callbackURL": "INSERT_GOOGLE_CALLBACK_HERE"
-  },
-  "STEAM": {
-    "clientID": "B6622CA506F173656A89DCB17CE8E454",
-    "alexSID": "STEAM_0:1:10542084", //steamID
-    "alexFID": "U:1:21084169", //SteamID3 32?
-    "alexCID": "76561197981349897" //SteamID64
   }
 };

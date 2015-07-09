@@ -11,9 +11,9 @@
                     <h6><b>Win %:</b> {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
                     <div class="twoBest">
                         <h6 class="title">Two Most Played</h6>
-                        <h6 class="heroOne">{{player.proficiency[0].name}}</h6>
+                        <h6 class="heroOne" ng-click="setHero(player.proficiency[0].name)">{{player.proficiency[0].name}}</h6>
                         <h6><b>Games:</b>{{player.proficiency[0].games}},<b>WR:</b>{{(player.proficiency[0].winRate*100).toFixed(2)}}%</h6>
-                        <h6 class="heroTwo">{{player.proficiency[1].name}}</h6>
+                        <h6 class="heroTwo" ng-click="setHero(player.proficiency[1].name)">{{player.proficiency[1].name}}</h6>
                         <h6><b>Games:</b>{{player.proficiency[1].games}},<b>WR:</b>{{(player.proficiency[1].winRate*100).toFixed(2)}}%</h6>
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                     <h6>This user's info is not available</h6>
                     <div ng-if="player.selectedHero" class="counters">
                         <h5>Counters</h5>
-                        <span>{{player.selectedHero.proficiency[0].name}}</span>
-                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
-                        <span>{{player.selectedHero.proficiency[1].name}}</span>
+                        <span ng-click="setHero(player.selectedHero.proficiency[0].name)">{{player.selectedHero.proficiency[0].name}}</span>
+                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2) }}%)</span><br/>
+                        <span ng-click="setHero(player.selectedHero.proficiency[1].name)">{{player.selectedHero.proficiency[1].name}}</span>
                         <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
-                        <span>{{player.selectedHero.proficiency[2].name}}</span>
+                        <span ng-click="setHero(player.selectedHero.proficiency[2].name)">{{player.selectedHero.proficiency[2].name}}</span>
                         <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
                     </div>
                 </div>
@@ -37,12 +37,12 @@
                     <h6 ng-if="player.hasOwnProperty('tempWinRate')"><b>WR:</b> {{(player.tempWinRate >= 0) ? ((player.tempWinRate).toFixed(2)*100).toFixed(2) : "N/A" }}%</h6>
                     <div class="counters">
                         <h5>Counters</h5>
-                        <span>{{player.selectedHero.proficiency[0].name}}</span>
-                        <span> (Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
-                        <span>{{player.selectedHero.proficiency[1].name}}</span>
+                        <span ng-click="setHero(player.selectedHero.proficiency[0].name)">{{player.selectedHero.proficiency[0].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[0].advantage*100).toFixed(2)}}%)</span><br/>
+                        <span ng-click="setHero(player.selectedHero.proficiency[1].name)">{{player.selectedHero.proficiency[1].name}}</span>
                         <span>(Adv: {{(player.selectedHero.proficiency[1].advantage*100).toFixed(2)}}%)</span><br/>
-                        <span>{{player.selectedHero.proficiency[2].name}}</span>
-                        <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span>
+                        <span ng-click="setHero(player.selectedHero.proficiency[2].name)">{{player.selectedHero.proficiency[2].name}}</span>
+                        <span>(Adv: {{(player.selectedHero.proficiency[2].advantage*100).toFixed(2)}}%)</span><br/>
                     </div>
                 </div>
                 <!--Another ng-if to show selectedHero specific data here-->
@@ -63,9 +63,9 @@
                     <h6><b>Win %:</b> {{getPercentage(player.userInfo[1],player.userInfo[2])}}</h6>
                     <div class="twoBest">
                         <h6 class="title">Two Most Played</h6>
-                        <h6 class="heroOne">{{player.proficiency[0].name}}</h6>
+                        <h6 class="heroOne" ng-click="setHero(player.proficiency[0].name)">{{player.proficiency[0].name}}</h6>
                         <h6><b>Games:</b>{{player.proficiency[0].games}},<b>WR:</b>{{(player.proficiency[0].winRate*100).toFixed(2)}}%</h6>
-                        <h6 class="heroTwo">{{player.proficiency[1].name}}</h6>
+                        <h6 class="heroTwo" ng-click="setHero(player.proficiency[0].name)">{{player.proficiency[1].name}}</h6>
                         <h6><b>Games:</b>{{player.proficiency[1].games}},<b>WR:</b>{{(player.proficiency[1].winRate*100).toFixed(2)}}%</h6>
                     </div>
                 </div>

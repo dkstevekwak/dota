@@ -1,0 +1,8 @@
+{
+  "name": "dota-sight-webkit",
+  "main": "index.html",
+  "window": {
+    "min_width": 1600,
+    "min_height": 900
+  }
+}

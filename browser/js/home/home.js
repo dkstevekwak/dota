@@ -207,9 +207,6 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
       $rootScope.playerList1 = res.slice(0,5);
       $rootScope.playerList2 = res.slice(5);
       $rootScope.groupData = cleanGroupData;
-      console.log('playerList1', $rootScope.playerList1);
-      console.log('playerList2', $rootScope.playerList2);
-      console.log('groupDate', $rootScope.groupDate);
 
       if (cleanGroupData && cleanGroupData.length) {
         cleanGroupData.forEach(function(group, idx){

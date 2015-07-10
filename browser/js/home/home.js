@@ -229,4 +229,4 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
         });
       };
     }
-});`
+});

@@ -191,7 +191,7 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
     if (searchObject.logs) {
       $rootScope.serverLogs = searchObject.logs;
     }
-    if ($rootScope.serverLogs && typeof $rootScope.serverLogs === "undefined") {
+    if ($rootScope.serverLogs && typeof $rootScope.playerLogs === "undefined") {
       $modal.open({
         templateUrl: '/js/playerPopulate/playerPopulate.html',
         controller: 'PlayerPopulateController',

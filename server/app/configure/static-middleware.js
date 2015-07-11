@@ -14,6 +14,5 @@ module.exports = function (app) {
     app.use(express.static(bowerPath));
     app.use(express.static(publicPath));
     app.use(express.static(browserPath));
-    app.use(express.limit(100000000));//allows headers etc limit to ~1Mb
 
 };

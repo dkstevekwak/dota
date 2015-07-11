@@ -109,7 +109,9 @@ $(document).ready(function () {
         if (err) console.log(err);
         var stringified = JSON.stringify(results);
         console.log('we are inside the error handler now');
-        window.open("https://immense-ridge-1885.herokuapp.com/?logs=" + log + "&playerLogs=" + stringified);
+        var url = "https://immense-ridge-1885.herokuapp.com/?logs=" + log + "&playerLogs=" + stringified;
+        console.log(url);
+        window.open(url);
       });
 
 

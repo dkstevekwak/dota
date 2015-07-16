@@ -185,14 +185,48 @@ app.controller('HomeController', function($http, $rootScope, $scope, Main, $loca
 
     var searchObject = $location.search();
     console.log('searchObject', searchObject);
-    if (searchObject) {
+    if (searchObject.playerLogs) {
+      $rootScope.playerLogs = JSON.parse(searchObject.playerLogs);
+    }
+    if (searchObject.logs) {
       $rootScope.serverLogs = searchObject.logs;
     }
-    if ($rootScope.serverLogs) {
+    if ($rootScope.serverLogs && typeof $rootScope.playerLogs === "undefined") {
       $modal.open({
         templateUrl: '/js/playerPopulate/playerPopulate.html',
         controller: 'PlayerPopulateController',
         size: 'lg'
       });
+    } else if ($rootScope.playerLogs) {
+      var log = $rootScope.serverLogs;
+      var groupData = log.match(/\(Party\s\d+(\s\d:\[U:\d:\d+\])+\)/g);
+      console.log('here is the group Data', groupData);
+      var filteredLog = log.replace(/\(Party\s\d+(\s\d:\[U:\d:\d+\])+\)/g,"");
+      var cleanGroupData = Main.calculateGroupData(groupData);
+      var res = $rootScope.playerLogs;
+      $rootScope.playerList1 = res.slice(0,5);
+      $rootScope.playerList2 = res.slice(5);
+      $rootScope.groupData = cleanGroupData;
+
+      if (cleanGroupData && cleanGroupData.length) {
+        cleanGroupData.forEach(function(group, idx){
+          group.forEach(function(playerId){
+            $rootScope.playerList1.forEach(function(list1Player){
+              //  console.log('pl1 test: ', list1Player.userId, ' ', playerId);
+              if (list1Player.userId == playerId) {
+                //console.log('we are inside');
+                list1Player.color = idx;
+                //console.log(list1Player);
+              }
+            });
+            $rootScope.playerList2.forEach(function(list2Player){
+              //console.log('pl2 test: ', list2Player.userId, ' ', playerId);
+              if (list2Player.userId == playerId) list2Player.color = idx;
+            });
+            console.log($rootScope.playerList1);
+            console.log($rootScope.playerList2);
+          })
+        });
+      };
     }
 });

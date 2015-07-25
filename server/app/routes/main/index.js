@@ -101,8 +101,8 @@ router.post('/serverLog', function(req, res, next){
         array.push([$(this).find("img").attr('alt'), $(this).find("td").first().next().next().text(), $(this).find("td").first().next().next().next().text(), $(this).find("td").first().next().next().next().next().text()]);
       });
       array.shift(); //generates all hero stuff
-      var playerName = $('#content-header').find('img').attr('alt');
-      var playerInfo = [$('#content-header-secondary').find('dd').find('time').text(),$('#content-header-secondary').find('.wins').text(),$('#content-header-secondary').find('.losses').text(),$('#content-header-secondary').find('.abandons').text()];
+      var playerName = $('.image-container-bigavatar').find('img').attr('alt');
+      var playerInfo = [$('.header-content-secondary').find('dd').find('time').text(),$('.header-content-secondary').find('.wins').text(),$('.header-content-secondary').find('.losses').text(),$('.header-content-secondary').find('.abandons').text()];
 
       var obj = {
         user: playerName,
